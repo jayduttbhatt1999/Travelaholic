@@ -2580,7 +2580,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-right .form-wrap {
-  padding: 40px 30px;
+  padding: 30px 20px;
   text-align: center;
 }
 
@@ -2633,6 +2633,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .single-destination .thumb img {
   width: 100%;
+  height: 230px;
 }
 
 .single-destination .desc {
@@ -4514,4 +4515,8 @@ button.btn.btn-primary:hover {
 
 p.col-lg-8.col-sm-12.footer-text.m-0 {
     color: #729dab;
+}
+/*...........Index Page...........*/
+h1.mb-10 {
+    color: darkblue;
 }

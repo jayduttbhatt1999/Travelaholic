@@ -55,7 +55,7 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index.html">Traveloholic </a>
+                <a href="index.html" style="color: aqua;font-size: 20px;font-weight: bolder;">Traveloholic </a>
 {#                <a href="index.html"><img src="/staticfiles/img/traveloholic.png" height="50px" width="70px" alt="" title=""/></a>#}
             </div>
             <nav id="nav-menu-container">
@@ -64,7 +64,7 @@
                     <li><a href="{% url 'app:about' %}">About</a></li>
                     <li><a href="{% url 'app:package' %}">Packages</a></li>
                     <li><a href="{% url 'app:hotels' %}">Hotels</a></li>
-                    <li><a href="{% url 'app:insurance' %}">Insurence</a></li>
+                    <li><a href="{% url 'app:insurance' %}">Insurance</a></li>
                     <li class="menu-has-children"><a href="">Blog</a>
                         <ul>
                             <li><a href="{% url 'app:blog-home' %}">Blog Home</a></li>
@@ -83,10 +83,12 @@
                         </ul>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
+                     <li><a href="{% url 'app:logout' %}">Logout</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
     </div>
+
 </header><!-- #header -->
 
 <!-- start banner Area -->
@@ -197,12 +199,12 @@
                 <div class="single-destination relative">
                     <div class="thumb relative">
                         <div class="overlay overlay-bg"></div>
-                        <img class="img-fluid" src="/staticfiles/img/d1.jpg" alt="">
+                        <img class="img-fluid" src="/staticfiles/img/niagara.jpg" alt="">
                     </div>
                     <div class="desc">
                         <a href="#" class="price-btn">$150</a>
-                        <h4>Mountain River</h4>
-                        <p>Paraguay</p>
+                        <h4>Niagara Falls</h4>
+                        <p>Niagara</p>
                     </div>
                 </div>
             </div>
@@ -210,12 +212,12 @@
                 <div class="single-destination relative">
                     <div class="thumb relative">
                         <div class="overlay overlay-bg"></div>
-                        <img class="img-fluid" src="/staticfiles/img/d2.jpg" alt="">
+                        <img class="img-fluid" src="/staticfiles/img/tobermory.jpg" alt="">
                     </div>
                     <div class="desc">
                         <a href="#" class="price-btn">$250</a>
-                        <h4>Dream City</h4>
-                        <p>Paris</p>
+                        <h4>Tobermory</h4>
+                        <p>Ontario</p>
                     </div>
                 </div>
             </div>
@@ -223,12 +225,12 @@
                 <div class="single-destination relative">
                     <div class="thumb relative">
                         <div class="overlay overlay-bg"></div>
-                        <img class="img-fluid" src="/staticfiles/img/d3.jpg" alt="">
+                        <img class="img-fluid" src="/staticfiles/img/banff.jpg" alt="">
                     </div>
                     <div class="desc">
                         <a href="#" class="price-btn">$350</a>
-                        <h4>Cloud Mountain</h4>
-                        <p>Sri Lanka</p>
+                        <h4>Banff</h4>
+                        <p>Alberta</p>
                     </div>
                 </div>
             </div>
