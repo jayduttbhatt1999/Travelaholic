@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 
 
@@ -18,12 +18,15 @@ def login_page(request):
         user_obj = User.objects.filter(username=username)
 
         if not user_obj.exists():
-            message.warning(request, 'Account not found ')
+            messages.warning(request, 'Account not found ')
+            messages.warning(request, 'Register here')
+            return redirect('app:register_page')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 
         user_obj = authenticate(username=username, password=password)
         if not user_obj:
-            message.warning(request, 'Invalid password ')
+            messages.warning(request, 'Invalid password ')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         login(request, user_obj)
@@ -34,6 +37,7 @@ def login_page(request):
 
 def register_page(request):
     if request.method == 'POST':
+        email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -63,24 +67,13 @@ def insurance(request):
     return render(request, "app/insurance.html")
 
 
-def bloghome(request):
-    return render(request, "app/blog-home.html")
-
-
-def blogsingle(request):
-    return render(request, "app/blog-single.html")
-
-
 def package(request):
     return render(request, "app/packages.html")
-
-
-def elements(request):
-    return render(request, "app/elements.html")
 
 
 def message(request):
     return render(request, "app/messages.html")
 
-def logout(request):
-    return redirect('app:login')
+
+def contact(request):
+    return render(request, "app/contact.html")
