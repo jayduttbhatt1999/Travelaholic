@@ -652,9 +652,9 @@ td, th {
 }
 
 .inline-flex {
-  display: -webkit-inline-box;
+  /*display: -webkit-inline-box;*/
   display: -webkit-inline-flex;
-  display: -moz-inline-flex;
+  /*display: -moz-inline-flex;*/
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
@@ -1023,7 +1023,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .genric-btn.arrow {
-  display: -webkit-inline-box;
+  /*display: -webkit-inline-box;*/
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-box-align: center;
@@ -1204,7 +1204,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .genric-btn.disable {
-  color: #222222, 0.3;
+  color: #222222;
   background: #f9f9ff;
   border: 1px solid transparent;
   cursor: not-allowed;
@@ -4379,7 +4379,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: transparent;
   border: 1px solid #333;
   font-weight: 300;
-  color: #777;
+  color: #729dab;
   padding-left: 20px;
   width: 80%;
 }
@@ -4466,7 +4466,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-footer-widget p {
-  color: #777777;
+  color: #729dab;
 }
 
 .single-footer-widget ul li {
@@ -4474,7 +4474,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-footer-widget ul li a {
-  color: #777777;
+  color: #729dab;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -4493,4 +4493,25 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .footer-text a, .footer-text i {
   color: #f8b600;
+}
+label.form-label {
+    color: aliceblue;
+    font-weight: 500;
+    font-size: 18px;
+}
+div#emailHelp {
+    color: white;
+    font-weight: 500;
+}
+input#exampleInputEmail1:focus,input#exampleInputPassword1:focus {
+    background-color: #abd0f1;
+}
+button.btn.btn-primary:hover {
+    background-color: darkblue;
+    color: powderblue;
+    border-color: black;
+}
+
+p.col-lg-8.col-sm-12.footer-text.m-0 {
+    color: #729dab;
 }
