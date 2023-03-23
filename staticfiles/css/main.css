@@ -2490,6 +2490,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-area {
   background: url(/staticfiles/img/hero-bg.jpg) center;
   background-size: cover;
+  height: 605px;
 }
 
 .banner-area .overlay-bg {
@@ -2541,11 +2542,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-left .primary-btn {
-  background: #f8b600;
+  background: #24248e;
 }
 
 .banner-left .primary-btn:hover {
-  background: #222;
+  background: #f8b600;
   color: #fff;
 }
 
