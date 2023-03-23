@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 
 
@@ -34,6 +34,9 @@ def login_page(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'app/login.html')
 
+def logout_page(request):
+    logout(request)
+    return render(request, 'app/index.html')
 
 def register_page(request):
     if request.method == 'POST':
