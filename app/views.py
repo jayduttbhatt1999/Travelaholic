@@ -82,10 +82,6 @@ def hotels(request):
     return render(request, "app/hotels.html")
 
 
-def insurance(request):
-    return render(request, "app/insurance.html")
-
-
 def package(request):
     return render(request, "app/packages.html")
 
