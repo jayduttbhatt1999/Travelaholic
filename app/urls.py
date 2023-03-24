@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from app.views import ResetPasswordView
 
 app_name = 'app'
 urlpatterns = [
@@ -13,6 +14,7 @@ urlpatterns = [
     path('index/package/', views.package, name='package'),
     path('messages/', views.message, name='messages'),
     path('contact/', views.contact, name='contact'),
-    path('index/payment/', views.payment,name='payment'),
-]
+    path('index/payment.html/', views.payment,name='payment'),
+    path('passwordreset/', ResetPasswordView.as_view(), name='passwordreset'),
+   ]
 

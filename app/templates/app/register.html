@@ -3,7 +3,7 @@
     <div class="banner-area" style="padding: 100px; margin: fill">
         <div class="relative text-white container">
 
-            <button method="POST">
+            <div method="POST">
                 {% csrf_token %}
                 {% include 'app/messages.html' %}
                 <div class="banner-left" style="text-align: center">
@@ -30,8 +30,9 @@
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password" name="password" required class="form-control" id="exampleInputPassword1">
                 </div>
-                < type="submit" style="alignment-baseline: center" class="primary-btn text-uppercase">Register</button>
+                <button type="submit" style="alignment-baseline: center" class="primary-btn text-uppercase">Register</button>
             </form>
+            </div>
         </div>
     </div>
 {% endblock %}
