@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-from .models import Amenities, Hotel, HotelImage
+from .models import Amenities, Hotel
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -83,8 +83,7 @@ def about(request):
 def hotels(request):
     amenities_objs = Amenities.objects.all()
     hotel_objs = Hotel.objects.all()
-    hotel_img = HotelImage.objects.all()
-    context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs, 'hotel_img': hotel_img}
+    context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs}
     return render(request, "app/hotels.html", context)
 
 

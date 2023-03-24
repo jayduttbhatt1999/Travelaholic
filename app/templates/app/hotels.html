@@ -56,8 +56,8 @@
                 <div class="col-lg-4">
                     <div class="single-destinations">
                         <div class="thumb">
-                            {% for hotel_img in hotel_img %}
-                                <img src="{{ hotel_img.url }}" alt=""/>
+                            {% for hotel_obj in hotel_objs %}
+                                <img src="{{ hotel_obj.url }}" alt=""/>
                             {% endfor %}
                         </div>
                         <div class="details">
@@ -67,45 +67,49 @@
                                         {{ hotel_obj.hotel_name }}
                                     </span>
                                 {% endfor %}
-                                <div class="star">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
+{#                                <div class="star">#}
+{#                                    <span class="fa fa-star checked"></span>#}
+{#                                    <span class="fa fa-star checked"></span>#}
+{#                                    <span class="fa fa-star checked"></span>#}
+{#                                    <span class="fa fa-star checked"></span>#}
+{#                                    <span class="fa fa-star"></span>#}
+{#                                </div>#}
                             </h4>
                             <p>
-                                View on map | 49 Reviews
+                                49 Reviews
                             </p>
                             <ul class="package-list">
                                 <li class="d-flex justify-content-between align-items-center">
-                                    <span>Swimming pool</span>
-                                    <span>Yes</span>
+                                    <span>Hotel Price (Per day)</span>
+                                    {% for hotel_obj in hotel_objs %}
+                                    <span>
+                                        ${{ hotel_obj.hotel_price }}
+                                    </span>
+                                {% endfor %}
                                 </li>
                                 <li class="d-flex justify-content-between align-items-center">
-                                    <span>Gymnesium</span>
-                                    <span>No</span>
+                                    <span>Review</span>
+                                    {% for hotel_obj in hotel_objs %}
+                                    <span>
+                                        {{ hotel_obj.status }}/5
+                                    </span>
+                                {% endfor %}
                                 </li>
                                 <li class="d-flex justify-content-between align-items-center">
-                                    <span>Wi-fi</span>
-                                    <span>Yes</span>
+
                                 </li>
                                 <li class="d-flex justify-content-between align-items-center">
-                                    <span>Room Service</span>
-                                    <span>No</span>
+
                                 </li>
                                 <li class="d-flex justify-content-between align-items-center">
-                                    <span>Air Condition</span>
-                                    <span>Yes</span>
+
                                 </li>
                                 <li class="d-flex justify-content-between align-items-center">
-                                    <span>Restaurant</span>
-                                    <span>Yes</span>
+
                                 </li>
                                 <li class="d-flex justify-content-between align-items-center">
-                                    <span>Price per night</span>
-                                    <a href="#" class="price-btn">$250</a>
+
+                                    <a href="#" class="price-btn align-content-md-center">Book now</a>
                                 </li>
                             </ul>
                         </div>

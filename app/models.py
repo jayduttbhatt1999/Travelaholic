@@ -35,14 +35,19 @@ class Hotel(BaseModel):
     description = models.TextField()
     amenities = models.ManyToManyField(Amenities)
     room_count = models.IntegerField(default=10)
+    url = models.URLField(blank=True, null=True)
+    STATUS = [
+        (0, 'Bad'),
+        (1, 'Ok'),
+        (2, 'Average'),
+        (3, 'Fine'),
+        (4, 'Good'),
+        (5, 'Excellent')
+    ]
+    status = models.PositiveSmallIntegerField(choices=STATUS, default=1)
 
     def __str__(self) -> str:
         return self.hotel_name
-
-
-class HotelImage(BaseModel):
-    hotel = models.ForeignKey(Hotel, related_name="Image", on_delete=models.CASCADE)
-    url = models.URLField(blank=True, null=True)
 
 
 class HotelBooking(BaseModel):
