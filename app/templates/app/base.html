@@ -58,17 +58,8 @@
             <div class="row align-items-center">
                 <div>
                     <ul>
-                        <li><a href="#">Visit us</a></li>
-                        <li><a href="#">Buy Tickets</a></li>
+                        <li><a href="{% url 'app:package' %}">View the packages Directly</a></li>
                     </ul>
-                </div>
-                <div class="col-lg-6 col-sm-6 col-6 header-top-right">
-                    <div class="header-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -76,7 +67,7 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="#" class="text-white" style="font-size: 20px">Traveloholic </a>
+                <a href="{% url 'app:index' %}" class="text-white" style="font-size: 20px">Traveloholic </a>
 {#                <a href="index.html"><img src="/staticfiles/img/traveloholic.png" height="50px" width="70px" alt="" title=""/></a>#}
             </div>
             <nav id="nav-menu-container">
