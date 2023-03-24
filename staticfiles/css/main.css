@@ -2490,7 +2490,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-area {
   background: url(/staticfiles/img/travel_bg.jpg) center;
   background-size: cover;
-  height: 605px;
+  height: auto;
   opacity: 0.9;
 }
 
