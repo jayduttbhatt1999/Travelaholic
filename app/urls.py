@@ -16,13 +16,12 @@ urlpatterns = [
     path('index/package/', views.package, name='package'),
     path('messages/', views.message, name='messages'),
     path('contact/', views.contact, name='contact'),
-    path('index/payment.html/', views.payment,name='payment'),
+    path('index/payment.html/', views.payment, name='payment'),
     path('passwordreset/', ResetPasswordView.as_view(), name='passwordreset'),
-   ]
+]
 
 if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,
-                              document_root=settings.MEDIA_ROOT)
-
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

@@ -42,7 +42,7 @@ class Hotel(BaseModel):
 
 class HotelImage(BaseModel):
     hotel = models.ForeignKey(Hotel, related_name="Image", on_delete=models.CASCADE)
-    images = models.ImageField(upload_to="hotel", blank=True)
+    url = models.URLField(blank=True, null=True)
 
 
 class HotelBooking(BaseModel):
