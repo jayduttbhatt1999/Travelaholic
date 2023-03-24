@@ -2488,9 +2488,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /*-------- Start Banner Area ------------*/
 .banner-area {
-  background: url(/staticfiles/img/hero-bg.jpg) center;
+  background: url(/staticfiles/img/travel_bg.jpg) center;
   background-size: cover;
   height: 605px;
+  opacity: 0.9;
 }
 
 .banner-area .overlay-bg {
@@ -4502,7 +4503,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #f8b600;
 }
 label.form-label {
-    color: #24248e;
+    color: white;
     font-weight: 600;
     font-size: 18px;
 }
@@ -4525,4 +4526,11 @@ p.col-lg-8.col-sm-12.footer-text.m-0 {
 /*...........Index Page...........*/
 h1.mb-10 {
     color: darkblue;
+}
+.form-payment{
+    background: url(../img/login.png) center;
+    background-size: cover;
+}
+.form-payment h3{
+  color: white;
 }

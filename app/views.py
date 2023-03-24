@@ -38,6 +38,10 @@ def logout_page(request):
     logout(request)
     return render(request, 'app/index.html')
 
+def payment(request):
+    return render(request, "app/payment.html")
+
+
 def register_page(request):
     if request.method == 'POST':
         email = request.POST.get('email')
