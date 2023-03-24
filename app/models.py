@@ -23,6 +23,12 @@ class Amenities(BaseModel):
         return self.amenity_name
 
 
+class Client(User):
+    user_name = models.CharField(max_length=100, null=True, blank=False)
+    email_id = models.CharField(max_length=100, null=True, blank=False)
+    pass_word = models.CharField(max_length=100, null=True, blank=False)
+
+
 class Hotel(BaseModel):
     hotel_name = models.CharField(max_length=100)
     hotel_price = models.IntegerField()
@@ -36,7 +42,7 @@ class Hotel(BaseModel):
 
 class HotelImage(BaseModel):
     hotel = models.ForeignKey(Hotel, related_name="Image", on_delete=models.CASCADE)
-    # images = models.ImageField(upload_to="hotel", blank=True)
+    images = models.ImageField(upload_to="hotel", blank=True)
 
 
 class HotelBooking(BaseModel):
