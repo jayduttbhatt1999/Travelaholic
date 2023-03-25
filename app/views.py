@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -104,5 +105,20 @@ def contact(request):
     return render(request, "app/contact.html")
 
 
-def booking(request):
-    return render(request, "app/booking.html")
+def booking(request, pkg_id):
+    request.session['pkgID'] = pkg_id
+    pkg = Package.objects.get(uuid=pkg_id)
+
+    return render(request, "app/booking.html", {'package': pkg})
+
+
+def confirm(request,pkg_id):
+    request.session['pkgID'] = pkg_id
+    name = request.POST['firstname']
+    numberOfPerson = int(request.POST['numperson'])
+    email = request.POST['email']
+
+    cost = (numberOfPerson * Package.objects.get(uuid=pkg_id).package_price)
+
+    # send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)], fail_silently=True)
+    return render(request, "app/confirm.html", {'cost': cost, 'name':name,'persons':numberOfPerson, 'email':email})

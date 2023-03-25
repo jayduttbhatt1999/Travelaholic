@@ -59,14 +59,15 @@
   <section class="form-payment" style="margin-top:30px;padding:50px; line-height:30px;">
 
 	<div class="container">
-      <form action="/action_page.php" style="margin-top: 30px">
-
-        <div class="row">
+      <form id="bookingForm" action="http://127.0.0.1:8000/confirm/{{ package.uuid }}" style="margin-top: 30px" method="POST">
+        {% csrf_token %}
+          <div class="row">
           <div class="col-sm-6">
             <h3>Billing Address</h3>
-
-
-
+              <br>
+            <h3><label for="pkgname"><i class="fa "></i> Package: {{ package.package_name }} </label>
+            <label for="pkgprice"><i class="fa"></i> ${{ package.package_price }} </label>
+            </h3><br>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
             <input type="text" id="fname" name="firstname" placeholder="John M. Doe"><br>
 
@@ -75,8 +76,6 @@
 
             <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
             <input type="text" id="email" name="email" placeholder="john@example.com">
-
-
 
            </div>
 
@@ -122,15 +121,19 @@
 {#      </div>#}
 {#              </div>#}
         </div>
+          <button id="submitButton" >BOOK NOW</button>
       </form>
 
 </div>
-	  	  <button onclick="myFunction()">BOOK NOW</button>
+
 
 <p id="demo"></p>
 
+
+
 <script>
 function myFunction() {
+
   document.getElementById("demo").innerHTML = "PAYMENT IS DISABLED DUE TO SECURITY REASONS ";
 }
 </script>
