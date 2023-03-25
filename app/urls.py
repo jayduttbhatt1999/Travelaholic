@@ -21,7 +21,7 @@ urlpatterns = [
     path('index/payment.html/', views.payment, name='payment'),
     path('booking/<pkg_id>', views.booking, name='booking'),
     path("confirm/<pkg_id>", views.confirm, name='confirm'),
-    # path('passwordreset/', auth_views.PasswordResetView.as_view(template_name='passwordreset',success_url='/'), name='passwordreset'),
+    path('profile/', views.profile, name='users-profile'),
     path('password-reset/',
          auth_views.PasswordResetView.as_view(
              template_name='app/registration/password_reset_form.html',

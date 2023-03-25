@@ -74,6 +74,7 @@ class Package(BaseModel):
         return self.package_name
 
 
+
 class HotelBooking(BaseModel):
     hotel = models.ForeignKey(Hotel, related_name="hotel_booking", on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name="user_booking", on_delete=models.CASCADE)
