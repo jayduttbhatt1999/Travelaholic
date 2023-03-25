@@ -58,3 +58,9 @@ class HotelBooking(BaseModel):
     startdate = models.DateField()
     enddate = models.DateField()
     booking_type = models.CharField(choices=(('pre paid', 'pre paid'), ('post paid', 'post paid')), max_length=100)
+
+class Contact(BaseModel):
+    name = models.CharField(max_length=100, blank=True)
+    email_id = models.CharField(max_length=100, blank=True)
+    subject = models.CharField(max_length=100, blank=True)
+    message = models.CharField(max_length=600, blank=True)
