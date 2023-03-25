@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from .models import Amenities, Hotel, Extras, Package
@@ -26,7 +26,6 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 def index(request):
     return render(request, 'app/index.html')
 
-
 @login_required
 def profile(request):
     return render(request, 'app/profile.html')
@@ -41,8 +40,9 @@ def login_page(request):
 
         if not user_obj.exists():
             messages.warning(request, 'Account not found ')
-            return redirect('app:register_page')
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            messages.warning(request, 'Please register here')
+            # return redirect('app:register_page')
+            return HttpResponseRedirect(reverse('app:register_page'))
 
         user_obj = authenticate(username=username, password=password)
         if not user_obj:
@@ -50,9 +50,9 @@ def login_page(request):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         login(request, user_obj)
-        return redirect('app:index')
+        # return redirect('app:index')
 
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect(reverse('app:index'))
     return render(request, 'app/login.html')
 
 
@@ -106,10 +106,8 @@ def package(request):
 def message(request):
     return render(request, "app/messages.html")
 
-
 def contact(request):
-    return render(request, "app/contact.html")
-
+    return render(request,"app/contact.html")
 
 def booking(request, pkg_id):
     request.session['pkgID'] = pkg_id
