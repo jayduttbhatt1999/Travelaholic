@@ -17,6 +17,7 @@ urlpatterns = [
     path('messages/', views.message, name='messages'),
     path('contact/', views.contact, name='contact'),
     path('index/payment.html/', views.payment, name='payment'),
+    path('booking/', views.booking, name='booking'),
     path('passwordreset/', ResetPasswordView.as_view(), name='passwordreset'),
 ]
 

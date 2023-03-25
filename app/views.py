@@ -19,6 +19,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       "please make sure you've entered the address you registered with, and check your spam folder."
     success_url = reverse_lazy('app:login')
 
+
 # Create your views here.
 def index(request):
     return render(request, 'app/index.html')
@@ -37,7 +38,6 @@ def login_page(request):
             return redirect('app:register_page')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-
         user_obj = authenticate(username=username, password=password)
         if not user_obj:
             messages.warning(request, 'Invalid password ')
@@ -48,9 +48,11 @@ def login_page(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'app/login.html')
 
+
 def logout_page(request):
     logout(request)
     return render(request, 'app/index.html')
+
 
 def payment(request):
     return render(request, "app/payment.html")
@@ -90,8 +92,8 @@ def hotels(request):
 def package(request):
     extras = Extras.objects.all()
     package_objs = Package.objects.all()
-    context = {'amenities_objs': extras, 'package_objs': package_objs}
-    return render(request, "app/packages.html",context)
+    context = {'extra_amenities_objs': extras, 'package_objs': package_objs}
+    return render(request, "app/packages.html", context)
 
 
 def message(request):
@@ -100,3 +102,7 @@ def message(request):
 
 def contact(request):
     return render(request, "app/contact.html")
+
+
+def booking(request):
+    return render(request, "app/booking.html")
