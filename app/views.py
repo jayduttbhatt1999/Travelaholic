@@ -41,7 +41,6 @@ def login_page(request):
 
         if not user_obj.exists():
             messages.warning(request, 'Account not found ')
-            messages.warning(request, 'Register here')
             return redirect('app:register_page')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -52,6 +51,7 @@ def login_page(request):
 
         login(request, user_obj)
         return redirect('app:index')
+
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'app/login.html')
 
@@ -66,22 +66,22 @@ def payment(request):
 
 
 def register_page(request):
+
     if request.method == 'POST':
-        email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
 
         user_obj = User.objects.filter(username=username)
 
         if user_obj.exists():
-            message.warning(request, 'Username already exists')
+            messages.warning(request, 'Username already exists')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         user = User.objects.create(username=username)
         user.set_password(password)
         user.save()
-        return redirect('/')
-
+        return redirect('app:login')
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'app/register.html')
 
 
