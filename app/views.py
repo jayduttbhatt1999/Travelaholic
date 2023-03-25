@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -6,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-from .models import Amenities, Hotel
+from .models import Amenities, Hotel, Extras, Package
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -18,6 +19,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       " If you don't receive an email, " \
                       "please make sure you've entered the address you registered with, and check your spam folder."
     success_url = reverse_lazy('app:login')
+
 
 # Create your views here.
 def index(request):
@@ -37,7 +39,6 @@ def login_page(request):
             return redirect('app:register_page')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-
         user_obj = authenticate(username=username, password=password)
         if not user_obj:
             messages.warning(request, 'Invalid password ')
@@ -48,9 +49,11 @@ def login_page(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'app/login.html')
 
+
 def logout_page(request):
     logout(request)
     return render(request, 'app/index.html')
+
 
 def payment(request):
     return render(request, "app/payment.html")
@@ -88,7 +91,10 @@ def hotels(request):
 
 
 def package(request):
-    return render(request, "app/packages.html")
+    extras = Extras.objects.all()
+    package_objs = Package.objects.all()
+    context = {'extra_amenities_objs': extras, 'package_objs': package_objs}
+    return render(request, "app/packages.html", context)
 
 
 def message(request):
@@ -97,3 +103,22 @@ def message(request):
 
 def contact(request):
     return render(request, "app/contact.html")
+
+
+def booking(request, pkg_id):
+    request.session['pkgID'] = pkg_id
+    pkg = Package.objects.get(uuid=pkg_id)
+
+    return render(request, "app/booking.html", {'package': pkg})
+
+
+def confirm(request,pkg_id):
+    request.session['pkgID'] = pkg_id
+    name = request.POST['firstname']
+    numberOfPerson = int(request.POST['numperson'])
+    email = request.POST['email']
+
+    cost = (numberOfPerson * Package.objects.get(uuid=pkg_id).package_price)
+
+    # send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)], fail_silently=True)
+    return render(request, "app/confirm.html", {'cost': cost, 'name':name,'persons':numberOfPerson, 'email':email})

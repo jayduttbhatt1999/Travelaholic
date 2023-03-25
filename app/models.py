@@ -23,6 +23,13 @@ class Amenities(BaseModel):
         return self.amenity_name
 
 
+class Extras(BaseModel):
+    extra_amenity_name = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.extra_amenity_name
+
+
 class Client(User):
     user_name = models.CharField(max_length=100, null=True, blank=False)
     email_id = models.CharField(max_length=100, null=True, blank=False)
@@ -50,6 +57,21 @@ class Hotel(BaseModel):
 
     def __str__(self) -> str:
         return self.hotel_name
+
+
+class Package(BaseModel):
+    package_name = models.CharField(max_length=100, blank=True)
+    package_city = models.CharField(max_length=100, blank=True)
+    package_province = models.CharField(max_length=100, blank=True)
+    package_duration = models.CharField(max_length=200, blank=True)
+    package_price = models.IntegerField()
+    description = models.TextField()
+    extras = models.ManyToManyField(Extras)
+    date = models.DateField(null=False)
+    url = models.URLField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.package_name
 
 
 class HotelBooking(BaseModel):
