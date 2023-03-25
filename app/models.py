@@ -59,8 +59,21 @@ class HotelBooking(BaseModel):
     enddate = models.DateField()
     booking_type = models.CharField(choices=(('pre paid', 'pre paid'), ('post paid', 'post paid')), max_length=100)
 
+
 class Contact(BaseModel):
     name = models.CharField(max_length=100, blank=True)
     email_id = models.CharField(max_length=100, blank=True)
     subject = models.CharField(max_length=100, blank=True)
     message = models.CharField(max_length=600, blank=True)
+
+
+class Detailed_description(models.Model):
+    dest_id = models.AutoField(primary_key=True)
+    country = models.CharField(max_length=30)
+    days = models.IntegerField(default=5)
+    price = models.IntegerField(default=500)
+    rating = models.IntegerField(default=5)
+    dest_name = models.CharField(max_length=35)
+    img1 = models.ImageField(upload_to='gallery')
+    img2 = models.ImageField(upload_to='gallery')
+    description = models.TextField(max_length=500)
