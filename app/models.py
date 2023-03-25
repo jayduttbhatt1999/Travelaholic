@@ -30,7 +30,9 @@ class Client(User):
 
 
 class Hotel(BaseModel):
-    hotel_name = models.CharField(max_length=100)
+    hotel_name = models.CharField(max_length=100, blank=True)
+    hotel_city = models.CharField(max_length=100, blank=True)
+    hotel_provinvce = models.CharField(max_length=100, blank=True)
     hotel_price = models.IntegerField()
     description = models.TextField()
     amenities = models.ManyToManyField(Amenities)
