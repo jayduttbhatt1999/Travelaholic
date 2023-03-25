@@ -51,385 +51,44 @@
                     </div>
                 </div>
             </div>
-
-            {% for hotel_obj in hotel_objs %}
-                <div class="col-lg-4">
-                    <div class="single-destinations">
-                        <div class="thumb">
-                            {% for hotel_obj in hotel_objs %}
-                                <img src="{{ hotel_obj.url }}" alt=""/>
-                            {% endfor %}
-                        </div>
-                        <div class="details">
-                            <h4 class="d-flex justify-content-between">
-                                {% for hotel_obj in hotel_objs %}
-                                    <span>
+            <div class="row">
+                {% for hotel_obj in hotel_objs %}
+                    <div class="col-lg-4">
+                        <div class="single-destinations">
+                            <div class="thumb" ">
+                                <img style="object-fit: cover" height="150" width="349"  src="{{ hotel_obj.url }}" alt=""/>
+                            </div>
+                            <div class="details">
+                                <h4 class="d-flex justify-content-between">
+                                        <span>
                                         {{ hotel_obj.hotel_name }}
                                     </span>
-                                {% endfor %}
-{#                                <div class="star">#}
-{#                                    <span class="fa fa-star checked"></span>#}
-{#                                    <span class="fa fa-star checked"></span>#}
-{#                                    <span class="fa fa-star checked"></span>#}
-{#                                    <span class="fa fa-star checked"></span>#}
-{#                                    <span class="fa fa-star"></span>#}
-{#                                </div>#}
-                            </h4>
-                            <p>
-                                49 Reviews
-                            </p>
-                            <ul class="package-list">
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <span>Hotel Price (Per day)</span>
-                                    {% for hotel_obj in hotel_objs %}
-                                    <span>
+                                </h4>
+                                <p>
+                                    49 Reviews
+                                </p>
+                                <ul class="package-list">
+                                    <li class="d-flex justify-content-between align-items-center">
+                                        <span>Hotel Price (Per day)</span>
+                                        <span>
                                         ${{ hotel_obj.hotel_price }}
                                     </span>
-                                {% endfor %}
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <span>Review</span>
-                                    {% for hotel_obj in hotel_objs %}
-                                    <span>
-                                        {{ hotel_obj.status }}/5
-                                    </span>
-                                {% endfor %}
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-
-                                    <a href="#" class="price-btn align-content-md-center">Book now</a>
-                                </li>
-                            </ul>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center">
+                                        <span>Review</span>
+                                        <span>
+                                            {{ hotel_obj.status }}/5
+                                        </span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center">
+                                        <a href="#" class="price-btn align-content-md-center">Book now</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-            {#            <div class="row">#}
-            {#                <div class="col-lg-4">#}
-            {#                    <div class="single-destinations">#}
-            {#                        <div class="thumb">#}
-            {#                            <img src="/staticfiles/img/hotels/d1.jpg" alt="">#}
-            {#                        </div>#}
-            {#                        <div class="details">#}
-            {#                            <h4 class="d-flex justify-content-between">#}
-            {#                                <span>Hilton Star Hotel</span>#}
-            {#                                <div class="star">#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star"></span>#}
-            {#                                </div>#}
-            {#                            </h4>#}
-            {#                            <p>#}
-            {#                                View on map | 49 Reviews#}
-            {#                            </p>#}
-            {#                            <ul class="package-list">#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Swimming pool</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Gymnesium</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Wi-fi</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Room Service</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Air Condition</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Restaurant</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Price per night</span>#}
-            {#                                    <a href="#" class="price-btn">$250</a>#}
-            {#                                </li>#}
-            {#                            </ul>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="col-lg-4">#}
-            {#                    <div class="single-destinations">#}
-            {#                        <div class="thumb">#}
-            {#                            <img src="/staticfiles/img/hotels/d2.jpg" alt="">#}
-            {#                        </div>#}
-            {#                        <div class="details">#}
-            {#                            <h4 class="d-flex justify-content-between">#}
-            {#                                <span>Hilton Star Hotel</span>#}
-            {#                                <div class="star">#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star"></span>#}
-            {#                                </div>#}
-            {#                            </h4>#}
-            {#                            <p>#}
-            {#                                View on map | 49 Reviews#}
-            {#                            </p>#}
-            {#                            <ul class="package-list">#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Swimming pool</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Gymnesium</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Wi-fi</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Room Service</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Air Condition</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Restaurant</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Price per night</span>#}
-            {#                                    <a href="#" class="price-btn">$250</a>#}
-            {#                                </li>#}
-            {#                            </ul>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="col-lg-4">#}
-            {#                    <div class="single-destinations">#}
-            {#                        <div class="thumb">#}
-            {#                            <img src="/staticfiles/img/hotels/d3.jpg" alt="">#}
-            {#                        </div>#}
-            {#                        <div class="details">#}
-            {#                            <h4 class="d-flex justify-content-between">#}
-            {#                                <span>Hilton Star Hotel</span>#}
-            {#                                <div class="star">#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star"></span>#}
-            {#                                </div>#}
-            {#                            </h4>#}
-            {#                            <p>#}
-            {#                                View on map | 49 Reviews#}
-            {#                            </p>#}
-            {#                            <ul class="package-list">#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Swimming pool</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Gymnesium</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Wi-fi</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Room Service</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Air Condition</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Restaurant</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Price per night</span>#}
-            {#                                    <a href="#" class="price-btn">$250</a>#}
-            {#                                </li>#}
-            {#                            </ul>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="col-lg-4">#}
-            {#                    <div class="single-destinations">#}
-            {#                        <div class="thumb">#}
-            {#                            <img src="/staticfiles/img/hotels/d4.jpg" alt="">#}
-            {#                        </div>#}
-            {#                        <div class="details">#}
-            {#                            <h4 class="d-flex justify-content-between">#}
-            {#                                <span>Hilton Star Hotel</span>#}
-            {#                                <div class="star">#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star"></span>#}
-            {#                                </div>#}
-            {#                            </h4>#}
-            {#                            <p>#}
-            {#                                View on map | 49 Reviews#}
-            {#                            </p>#}
-            {#                            <ul class="package-list">#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Swimming pool</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Gymnesium</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Wi-fi</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Room Service</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Air Condition</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Restaurant</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Price per night</span>#}
-            {#                                    <a href="#" class="price-btn">$250</a>#}
-            {#                                </li>#}
-            {#                            </ul>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="col-lg-4">#}
-            {#                    <div class="single-destinations">#}
-            {#                        <div class="thumb">#}
-            {#                            <img src="/staticfiles/img/hotels/d5.jpg" alt="">#}
-            {#                        </div>#}
-            {#                        <div class="details">#}
-            {#                            <h4 class="d-flex justify-content-between">#}
-            {#                                <span>Hilton Star Hotel</span>#}
-            {#                                <div class="star">#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star"></span>#}
-            {#                                </div>#}
-            {#                            </h4>#}
-            {#                            <p>#}
-            {#                                View on map | 49 Reviews#}
-            {#                            </p>#}
-            {#                            <ul class="package-list">#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Swimming pool</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Gymnesium</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Wi-fi</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Room Service</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Air Condition</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Restaurant</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Price per night</span>#}
-            {#                                    <a href="#" class="price-btn">$250</a>#}
-            {#                                </li>#}
-            {#                            </ul>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#                <div class="col-lg-4">#}
-            {#                    <div class="single-destinations">#}
-            {#                        <div class="thumb">#}
-            {#                            <img src="/staticfiles/img/hotels/d6.jpg" alt="">#}
-            {#                        </div>#}
-            {#                        <div class="details">#}
-            {#                            <h4 class="d-flex justify-content-between">#}
-            {#                                <span>Hilton Star Hotel</span>#}
-            {#                                <div class="star">#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star checked"></span>#}
-            {#                                    <span class="fa fa-star"></span>#}
-            {#                                </div>#}
-            {#                            </h4>#}
-            {#                            <p>#}
-            {#                                View on map | 49 Reviews#}
-            {#                            </p>#}
-            {#                            <ul class="package-list">#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Swimming pool</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Gymnesium</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Wi-fi</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Room Service</span>#}
-            {#                                    <span>No</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Air Condition</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Restaurant</span>#}
-            {#                                    <span>Yes</span>#}
-            {#                                </li>#}
-            {#                                <li class="d-flex justify-content-between align-items-center">#}
-            {#                                    <span>Price per night</span>#}
-            {#                                    <a href="#" class="price-btn">$250</a>#}
-            {#                                </li>#}
-            {#                            </ul>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
+                {% endfor %}
+            </div>
         </div>
     </section>
     <!-- End destinations Area -->
