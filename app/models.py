@@ -64,6 +64,7 @@ class Package(BaseModel):
     package_city = models.CharField(max_length=100, blank=True)
     package_province = models.CharField(max_length=100, blank=True)
     package_duration = models.CharField(max_length=200, blank=True)
+    package_airport = models.CharField(max_length=100, blank=True)
     package_price = models.IntegerField()
     description = models.TextField()
     extras = models.ManyToManyField(Extras)

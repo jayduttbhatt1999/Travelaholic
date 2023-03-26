@@ -152,5 +152,14 @@ def confirm(request, pkg_id):
 
     cost = (numberOfPerson * Package.objects.get(uuid=pkg_id).package_price)
 
-    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)], fail_silently=True)
+    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
+              fail_silently=True)
     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
+
+
+def locationinfo(request):
+    return render(request, "app/locationinfo.html")
+
+
+def locationinfo2(request):
+    return render(request, "app/locationinfo2.html")

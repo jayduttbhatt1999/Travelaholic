@@ -68,16 +68,64 @@
             <h3><label for="pkgname"><i class="fa "></i> Package: {{ package.package_name }} </label>
             <label for="pkgprice"><i class="fa"></i> ${{ package.package_price }} </label>
             </h3><br>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe"><br>
+            <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Enter your name'"
+                                       class="common-input mb-20 form-control" required="" type="text">
 
-            <label for="fnumperson"><i class="fa fa-user"></i> Number of Persons</label><br>
-            <input type="text" id="fnumperson" name="numperson" placeholder="ex. 1"><br>
+                                <label style="margin-right: 62px;">
+                                    <input type="radio" name="gender" value="male" style="margin-right: 7px;">Male
+                                </label>
+                                <label style="margin-right: 46px;">
+                                    <input type="radio" name="gender" value="female" style="margin-right: 7px;">Female
+                                </label>
+                                <label style="margin-right: 46px;">
+                                    <input type="radio" name="gender" value="other" style="margin-right: 7px;">Other
+                                </label>
 
-            <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
 
-           </div>
+{#                                <input mobile ="mobile" placeholder="Mobile"#}
+{#                                       pattern="[0-9.-]"#}
+{#                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Eg. 437-278-0987'"#}
+{#                                       class="common-input mb-20 form-control" required="" type="mobile">#}
+                                <input class="common-input mb-20 form-control" type="tel"
+                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                       onfocus="this.placeholder"
+                                       placeholder="Mobile" required>
+
+
+                                <input name="email" placeholder="Enter email address"
+                                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"
+                                       class="common-input mb-20 form-control" required="" type="email">
+
+{#                                  <label for="quantity">Quantity (between 1 and 5):</label>#}
+{#                                  <input type="number" id="quantity" name="quantity" min="1" max="500" placeholder="parth" size="500">#}
+
+                                  <input type="number" name="people" id="quantity" placeholder="Number of people" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Number of people'"
+                                       class="common-input mb-20 form-control" required="">
+
+{#                                <input name="address" placeholder="Enter address" onfocus="this.placeholder = ''"#}
+{#                                       pattern="[0-9A-Za-z0-9]"#}
+{#                                       onblur="this.placeholder = 'Enter address'"#}
+{#                                       class="common-input mb-20 form-control" required="" type="text">#}
+                            </div>
+{#                            <div class="col-lg-6 form-group">#}
+{#                                <textarea class="common-textarea form-control" name="message"#}
+{#                                          placeholder="Enter Messege" onfocus="this.placeholder = ''"#}
+{#                                          onblur="this.placeholder = 'Enter Messege'" required=""></textarea>#}
+{#                            </div>#}
+                            </div>
+                                <div class="form-group mb-0">
+                                    <div class="custom-control custom-checkbox" style="margin: 0px;">
+                                        <input required="" type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                                        <label class="custom-control-label" for="exampleCheck1" style="margin-right: 496px;margin-top: -2px;">I agree to the <a href="#">terms of service</a>.</label>
+                                    </div>
+                            <div class="col-lg-12">
+                                <div class="alert-msg" style="text-align: left;"></div>
+                                <button name="btnS" class="genric-btn primary" style="float: right;margin-top: 20px;margin-right: 760px;" type="submit">BOOK NOW</button>
+                            </div>
+                        </div>
 
 {#			<div class="col-sm-6">#}
 {##}
@@ -120,8 +168,8 @@
 {##}
 {#      </div>#}
 {#              </div>#}
-        </div>
-          <button id="submitButton" >BOOK NOW</button>
+{#        </div>#}
+{#          <button id="submitButton" >BOOK NOW</button>#}
       </form>
 
 </div>
