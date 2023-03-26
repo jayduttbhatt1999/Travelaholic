@@ -10,20 +10,28 @@ app_name = 'app'
 urlpatterns = [
     path('', views.login_page, name='login'),
     path('', views.logout_page, name='logout'),
+
     path('accounts/login/', views.login_page, name='login'),
+
     path('index/', views.index, name="index"),
     path('index/about/', views.about, name="about"),
+
     path('register/', views.register_page, name='register_page'),
+
     path('hotels/', views.hotels, name='hotels'),
     path('index/package/', views.package, name='package'),
+
     path(r'locationinfo.html/', views.locationinfo, name='locationinfo'),
     path(r'locationinfo2.html/', views.locationinfo2, name='locationinfo2'),
+
     path('messages/', views.message, name='messages'),
     path('contact/', views.contact, name='contact'),
     path('index/payment.html/', views.payment, name='payment'),
     path('booking/<pkg_id>', views.booking, name='booking'),
     path("confirm/<pkg_id>", views.confirm, name='confirm'),
     path('profile/', views.profile, name='users-profile'),
+
+
     path('password-reset/',
          auth_views.PasswordResetView.as_view(
              template_name='app/registration/password_reset_form.html',

@@ -2,7 +2,6 @@ from django.db import models
 import uuid
 from django.contrib.auth.models import User
 
-# import PIL
 # Create your models here.
 
 class BaseModel(models.Model):
