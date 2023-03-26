@@ -110,22 +110,6 @@ def package(request):
 def message(request):
     return render(request, "app/messages.html")
 
-
-def contact(request):
-    if request.method == 'POST':
-        # create an instance of our form, and fill it with the POST data
-        form1 = ContactUsForm(request.POST)
-        if form1.is_valid():
-            form1.save()
-
-            form2 = ContactUsForm()
-            return render(request, 'app/contact.html', {'form': form2})
-    else:
-        # this must be a GET request, so create an empty form
-        form = ContactUsForm()
-        return render(request, 'app/contact.html', {'form': form})
-    # return render(request, "app/contact.html")
-
 def booking(request, pkg_id):
     request.session['pkgID'] = pkg_id
     pkg = Package.objects.get(uuid=pkg_id)
@@ -138,18 +122,26 @@ def hotelbooking(request, pkg_id):
 
     return render(request, "app/hotelbooking.html", {'hotel': pkg})
 
+def contact(request):
+    if request.method == 'POST':
+        # create an instance of our form, and fill it with the POST data
+        form1 = ContactUsForm(request.POST)
+        if form1.is_valid():
+            form1.save()
+            form2 = ContactUsForm()
+            return render(request, 'app/contact.html', {'form': form2})
+    else:
+        form = ContactUsForm()
+        return render(request, 'app/contact.html', {'form': form})
+
 def confirm(request, pkg_id):
     request.session['pkgID'] = pkg_id
     name = request.POST['name']
     persons = int(request.POST['people'])
     email = request.POST['email']
-
     cost = (persons * Package.objects.get(uuid=pkg_id).package_price)
-
-    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
-              fail_silently=True)
+    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)], fail_silently=True)
     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': persons, 'email': email})
-
 
 
 def locationinfo(request):
@@ -158,7 +150,6 @@ def locationinfo(request):
 
 def locationinfo2(request):
     return render(request, "app/locationinfo2.html")
-
 
 def hotelconfirm(request, pkg_id):
     request.session['pkgID'] = pkg_id
