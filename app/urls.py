@@ -19,6 +19,7 @@ urlpatterns = [
     path('register/', views.register_page, name='register_page'),
 
     path('hotels/', views.hotels, name='hotels'),
+    path('hotels/search_hotels', views.search_hotels, name='hotel'),
     path('index/package/', views.package, name='package'),
 
     path(r'locationinfo.html/', views.locationinfo, name='locationinfo'),

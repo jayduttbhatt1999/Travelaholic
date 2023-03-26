@@ -152,3 +152,10 @@ def locationinfo(request):
 
 def locationinfo2(request):
     return render(request, "app/locationinfo2.html")
+
+def search_hotels(request):
+    search = request.POST['search']
+    amenities_objs = Amenities.objects.all()
+    hotel_objs = Hotel.objects.filter(hotel_city=search)
+    context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs}
+    return render(request, "app/hotels.html", context)

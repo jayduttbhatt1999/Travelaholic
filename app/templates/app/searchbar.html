@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+{% block start %}
+<head>
+    <title>Hotel Search</title>
+</head>
+<body>
+<h2 class="text center">Search Results</h2>
+
+<div class="container">
+    <div class="row justify-content-center m-4">
+
+  {% for hotel_obj in hotel_objs %}
+    <h1>{  {{ hotel_obj.hotel_name }}</h1>
+
+{% endfor %}
+
+        </div>
+    </div>
+
+
+
+</body>
+{% endblock %}
+</html>
