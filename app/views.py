@@ -60,7 +60,6 @@ def login_page(request):
         return HttpResponseRedirect(reverse('app:index'))
     return render(request, 'app/login.html')
 
-
 def logout_page(request):
     logout(request)
     return render(request, 'app/index.html')
@@ -159,6 +158,6 @@ def hotelconfirm(request, pkg_id):
 
     cost = (numberOfPerson * Hotel.objects.get(uuid=pkg_id).hotel_price)
 
-    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
+    send_mail('Confirm your booking', 'Make payment', 'iamsuparno@gmail.com', [email.format(cost)],
               fail_silently=True)
     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
