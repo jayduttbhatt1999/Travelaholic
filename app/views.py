@@ -126,17 +126,6 @@ def contact(request):
         return render(request, 'app/contact.html', {'form': form})
     # return render(request, "app/contact.html")
 
-
-# def usermessage(request):
-#     if request.method == "POST":
-#         form = Usermessage(request.POST)
-#         if form.is_valid():
-#             form.save()
-#     else:
-#         form = Usermessage()
-#     return render(request, 'app/contact.html', {'form': form})
-#
-
 def booking(request, pkg_id):
     request.session['pkgID'] = pkg_id
     pkg = Package.objects.get(uuid=pkg_id)
