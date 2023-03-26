@@ -58,8 +58,9 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <form method="post" action="{% url 'app:usermessage' %}" role="form" novalidate="novalidate" class="form-area contact-form text-right" id="myForm" >
+                    <form method="POST" action="{% url 'app:usermessage' %}" role="form" novalidate="novalidate" class="form-area contact-form text-right" id="myForm" >
                         {% csrf_token %}
+                        {{ form }}
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''"

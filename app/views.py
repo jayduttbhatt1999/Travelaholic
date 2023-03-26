@@ -8,7 +8,10 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
+
+from .forms import Usermessage
 from .models import Amenities, Hotel, Extras, Package, Contact
+from django import forms
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -112,6 +115,7 @@ def contact(request):
 
 
 def usermessage(request):
+    form = Usermessage(request.POST)
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -119,7 +123,7 @@ def usermessage(request):
         msg = request.POST.get('message')
         data = Contact(name=name, email_id=email, subject=subject, message=msg)
         data.save()
-    return render(request, "app/contact.html")
+    return render(request, "app/contact.html", {'form': form})
 
 
 def booking(request, pkg_id):
