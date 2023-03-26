@@ -26,9 +26,11 @@ urlpatterns = [
 
     path('messages/', views.message, name='messages'),
     path('contact/', views.contact, name='contact'),
-    path('index/payment.html/', views.payment, name='payment'),
+    path('payment.html', views.payment, name='payment'),
     path('booking/<pkg_id>', views.booking, name='booking'),
+    path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),
     path("confirm/<pkg_id>", views.confirm, name='confirm'),
+    path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
     path('profile/', views.profile, name='users-profile'),
 
 
