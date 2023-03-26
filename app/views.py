@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-from .models import Amenities, Hotel, Extras, Package
+from .models import Amenities, Hotel, Extras, Package, Contact
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -25,6 +25,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 # Create your views here.
 def index(request):
     return render(request, 'app/index.html')
+
 
 @login_required
 def profile(request):
@@ -66,7 +67,6 @@ def payment(request):
 
 
 def register_page(request):
-
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -106,8 +106,21 @@ def package(request):
 def message(request):
     return render(request, "app/messages.html")
 
+
 def contact(request):
-    return render(request,"app/contact.html")
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        msg = request.POST.get('message')
+        data = Contact(name=name, email_id=email, subject=subject, message=msg)
+        data.save()
+    return render(request, "app/contact.html")
+
+
+# def usermessage(request):
+
+
 
 def booking(request, pkg_id):
     request.session['pkgID'] = pkg_id
