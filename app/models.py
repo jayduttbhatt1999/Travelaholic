@@ -87,7 +87,7 @@ class Contact(BaseModel):
     name = models.CharField(max_length=100, blank=True)
     email_id = models.CharField(max_length=100, blank=True)
     subject = models.CharField(max_length=100, blank=True)
-    message = models.CharField(max_length=600, blank=True)
+    message = models.CharField(max_length=1000, blank=True, null=True)
 
 
 class Detailed_description(models.Model):

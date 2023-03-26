@@ -9,9 +9,10 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .forms import Usermessage
+from .forms import ContactUsForm
 from .models import Amenities, Hotel, Extras, Package, Contact
 from django import forms
+from django.core.mail import send_mail
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -111,20 +112,30 @@ def message(request):
 
 
 def contact(request):
-    return render(request, "app/contact.html")
+    if request.method == 'POST':
+        # create an instance of our form, and fill it with the POST data
+        form1 = ContactUsForm(request.POST)
+        if form1.is_valid():
+            form1.save()
+
+            form2 = ContactUsForm()
+            return render(request, 'app/contact.html', {'form': form2})
+    else:
+        # this must be a GET request, so create an empty form
+        form = ContactUsForm()
+        return render(request, 'app/contact.html', {'form': form})
+    # return render(request, "app/contact.html")
 
 
-def usermessage(request):
-    form = Usermessage(request.POST)
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        msg = request.POST.get('message')
-        data = Contact(name=name, email_id=email, subject=subject, message=msg)
-        data.save()
-    return render(request, "app/contact.html", {'form': form})
-
+# def usermessage(request):
+#     if request.method == "POST":
+#         form = Usermessage(request.POST)
+#         if form.is_valid():
+#             form.save()
+#     else:
+#         form = Usermessage()
+#     return render(request, 'app/contact.html', {'form': form})
+#
 
 def booking(request, pkg_id):
     request.session['pkgID'] = pkg_id
@@ -141,5 +152,5 @@ def confirm(request, pkg_id):
 
     cost = (numberOfPerson * Package.objects.get(uuid=pkg_id).package_price)
 
-    # send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)], fail_silently=True)
+    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)], fail_silently=True)
     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
