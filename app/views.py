@@ -5,10 +5,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-from .models import Amenities, Hotel, Extras, Package
+
+from .forms import ContactUsForm
+from .models import Amenities, Hotel, Extras, Package, Contact
+from django import forms
+from django.core.mail import send_mail
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -41,9 +45,9 @@ def login_page(request):
 
         if not user_obj.exists():
             messages.warning(request, 'Account not found ')
-            messages.warning(request, 'Register here')
-            return redirect('app:register_page')
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            messages.warning(request, 'Please register here')
+            # return redirect('app:register_page')
+            return HttpResponseRedirect(reverse('app:register_page'))
 
         user_obj = authenticate(username=username, password=password)
         if not user_obj:
@@ -51,8 +55,9 @@ def login_page(request):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         login(request, user_obj)
-        return redirect('app:index')
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        # return redirect('app:index')
+
+        return HttpResponseRedirect(reverse('app:index'))
     return render(request, 'app/login.html')
 
 
@@ -67,21 +72,20 @@ def payment(request):
 
 def register_page(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
 
         user_obj = User.objects.filter(username=username)
 
         if user_obj.exists():
-            message.warning(request, 'Username already exists')
+            messages.warning(request, 'Username already exists')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         user = User.objects.create(username=username)
         user.set_password(password)
         user.save()
-        return redirect('/')
-
+        return redirect('app:login')
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'app/register.html')
 
 
@@ -108,8 +112,19 @@ def message(request):
 
 
 def contact(request):
-    return render(request, "app/contact.html")
+    if request.method == 'POST':
+        # create an instance of our form, and fill it with the POST data
+        form1 = ContactUsForm(request.POST)
+        if form1.is_valid():
+            form1.save()
 
+            form2 = ContactUsForm()
+            return render(request, 'app/contact.html', {'form': form2})
+    else:
+        # this must be a GET request, so create an empty form
+        form = ContactUsForm()
+        return render(request, 'app/contact.html', {'form': form})
+    # return render(request, "app/contact.html")
 
 def booking(request, pkg_id):
     request.session['pkgID'] = pkg_id
@@ -126,5 +141,14 @@ def confirm(request, pkg_id):
 
     cost = (numberOfPerson * Package.objects.get(uuid=pkg_id).package_price)
 
-    # send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)], fail_silently=True)
+    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
+              fail_silently=True)
     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
+
+
+def locationinfo(request):
+    return render(request, "app/locationinfo.html")
+
+
+def locationinfo2(request):
+    return render(request, "app/locationinfo2.html")
