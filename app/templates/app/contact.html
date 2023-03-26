@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <form method="post" action="{% url 'app:contact' %}" role="form" novalidate="novalidate" class="form-area contact-form text-right" id="myForm" >
+                    <form method="post" action="{% url 'app:usermessage' %}" role="form" class="form-area contact-form text-right" id="myForm" >
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-6 form-group">

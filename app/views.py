@@ -108,6 +108,10 @@ def message(request):
 
 
 def contact(request):
+    return render(request, "app/contact.html")
+
+
+def usermessage(request):
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -116,10 +120,6 @@ def contact(request):
         data = Contact(name=name, email_id=email, subject=subject, message=msg)
         data.save()
     return render(request, "app/contact.html")
-
-
-# def usermessage(request):
-
 
 
 def booking(request, pkg_id):
