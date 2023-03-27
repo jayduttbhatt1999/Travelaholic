@@ -60,15 +60,12 @@ def login_page(request):
         return HttpResponseRedirect(reverse('app:index'))
     return render(request, 'app/login.html')
 
-
 def logout_page(request):
     logout(request)
     return render(request, 'app/index.html')
 
-
 def payment(request):
     return render(request, "app/payment.html")
-
 
 def register_page(request):
     if request.method == 'POST':
@@ -110,7 +107,6 @@ def package(request):
 
 def message(request):
     return render(request, "app/messages.html")
-
 
 def contact(request):
     if request.method == 'POST':
