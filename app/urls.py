@@ -20,6 +20,7 @@ urlpatterns = [
     path('hotels/', views.hotels, name='hotels'),
     path('hotels/search_hotels', views.search_hotels, name='hotel'),
     path('index/package/', views.package, name='package'),
+    path('hotelbooking/', views.hotelbooking, name='hotelbooking'),
 
     path(r'locationinfo.html/', views.locationinfo, name='locationinfo'),
     path(r'locationinfo2.html/', views.locationinfo2, name='locationinfo2'),
@@ -35,7 +36,6 @@ urlpatterns = [
     # path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
 
     path('profile/', views.profile, name='users-profile'),
-
 
     path('password-reset/',
          auth_views.PasswordResetView.as_view(

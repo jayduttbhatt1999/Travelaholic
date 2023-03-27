@@ -31,6 +31,9 @@ def index(request):
     return render(request, 'app/index.html')
 
 
+def hotelbooking(request):
+    return render(request, "app/hotelbooking.html")
+
 @login_required
 def profile(request):
     return render(request, 'app/profile.html')
