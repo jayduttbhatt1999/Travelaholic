@@ -1,13 +1,29 @@
+{% extends 'app/base.html' %}
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-     <title>Document</title>
-</head>
+<html lang="zxx" class="no-js">
+
+{% block start %}
+    <!-- start banner Area -->
+    <section class="relative about-banner">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Your Amount Booking Confirmation
+                    </h1> <br> <br> <br>
+                </div>
+            </div>
+        </div>
+    </section>
 <body>
+ <div class ='container'>
     <h1>{{ name }}</h1>
     <h1>Total Persons: {{ persons }}</h1>
-    <h1>Total cost of Stay: {{ cost }}</h1>
+    <h1>Total cost of Stay: {{ cost }} CAD</h1>
     <h1>Your mail: {{ email }}</h1>
-    <h3>Click here to proceed to payment:<li><a href="http://127.0.0.1:8000/payment/">Payment Portal</a></li></h3>
-</body>
-</html>
+    <h3>Click here to proceed to payment ---><a href="http://127.0.0.1:8000/payment/">Payment Portal</a></h3>
+</div>
+</body></html>
+{% endblock %}
