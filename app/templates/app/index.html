@@ -55,7 +55,7 @@
                     <li><a href="{% url 'app:package' %}">Packages</a></li>
                     <li><a href="{% url 'app:hotels' %}">Hotels</a></li>
                     <li><a href="{% url 'app:contact' %}">Contact Us</a></li>
-                    <li><a href="payment.html">Payment</a></li>
+                    <li><a href={% url 'app:payment' %}>Payment</a></li>
                     <li><a href="{% url 'app:users-profile' %}">User Profile</a></li>
                      <li><a href="{% url 'app:logout' %}">Logout</a></li>
                 </ul>
@@ -104,7 +104,7 @@
                         <img class="img-fluid" src="/staticfiles/img/niagara.jpg" alt="">
                     </div>
                     <div class="desc">
-                        <a href="#" class="price-btn">$250</a>
+                        <a href="{% url 'app:niagara' %}" class="price-btn">$350</a>
                         <h4>Niagara Falls</h4>
                         <p>Niagara</p>
                     </div>
@@ -114,12 +114,12 @@
                 <div class="single-destination relative">
                     <div class="thumb relative">
                         <div class="overlay overlay-bg"></div>
-                        <img class="img-fluid" src="/staticfiles/img/tobermory.jpg" alt="">
+                        <img class="img-fluid" src="/staticfiles/img/quebec.jpg" alt="">
                     </div>
                     <div class="desc">
-                        <a href="#" class="price-btn">$150</a>
-                        <h4>Tobermory</h4>
-                        <p>Ontario</p>
+                        <a href="{% url 'app:quebec' %}" class="price-btn">$450</a>
+                        <h4>Quebec</h4>
+                        <p>Quebec</p>
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                         <img class="img-fluid" src="/staticfiles/img/banff.jpg" alt="">
                     </div>
                     <div class="desc">
-                        <a href="#" class="price-btn">$500</a>
+                        <a href="{% url 'app:banff' %}" class="price-btn">$500</a>
                         <h4>Banff</h4>
                         <p>Alberta</p>
                     </div>
