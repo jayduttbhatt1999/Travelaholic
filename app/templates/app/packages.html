@@ -41,7 +41,7 @@
                         </div>
                         <div class="price-detials">
                             <a
-                                    href="{% url 'app:quebec' %}" class="price-btn">Starting From <span>$200</span>
+                                    href="{% url 'app:quebec' %}" class="price-btn">Click here to get more info!
                             </a>
                         </div>
                         <div class="details">
@@ -108,15 +108,11 @@
                                         <span>{{ package_obj.package_airport}}</span>
                                     </li>
                                     <li class="d-flex justify-content-between align-items-center">
-                                        <span>Extras</span>
-                                        <span>{{ package_obj.extras }}</span>
-                                    </li>
-                                    <li class="d-flex justify-content-between align-items-center">
                                         <span style = "margin-bottom: 15px"> Price per person</span>
                                         <p class="price-btn1">${{ package_obj.package_price }} </p>
                                     </li>
                                     <li class="d-flex justify-content-between align-center">
-                                  <button class="Book Now-btn" style="margin-left: 35%"><a href="{% url 'app:booking' package_obj.uuid %}" style="color: black">Book Now</a></button>
+                                  <button class="Book Now-btn" style="margin-left: 35%"><a href="{% url 'app:booking' package_obj.uuid %}" style="color: white">Book Now</a></button>
                                     </li>
                                 </ul>
                             </div>
