@@ -28,7 +28,7 @@ urlpatterns = [
     path('messages/', views.message, name='messages'),
 
     path('contact/', views.contact, name='contact'),
-    path('index/payment/', views.payment, name='payment'),
+    path('payment/', views.payment, name='payment'),
 
     path('booking/<pkg_id>', views.booking, name='booking'),
     path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),

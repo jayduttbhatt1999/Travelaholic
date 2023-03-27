@@ -129,23 +129,18 @@ def booking(request, pkg_id):
 
     return render(request, "app/booking.html", {'package': pkg})
 
-def hotelbooking(request, pkg_id):
-    request.session['hotelID'] = pkg_id
-    pkg = Hotel.objects.get(uuid=pkg_id)
-
-    return render(request, "app/hotelbooking.html", {'hotel': pkg})
 
 def confirm(request, pkg_id):
     request.session['pkgID'] = pkg_id
-    name = request.POST['firstname']
-    numberOfPerson = int(request.POST['numperson'])
+    name = request.POST['name']
+    persons = int(request.POST['people'])
     email = request.POST['email']
 
-    cost = (numberOfPerson * Package.objects.get(uuid=pkg_id).package_price)
+    cost = (persons * Package.objects.get(uuid=pkg_id).package_price)
 
     send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
               fail_silently=True)
-    return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
+    return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': persons, 'email': email})
 
 
 def quebec(request):
@@ -156,6 +151,23 @@ def banff(request):
 def niagara(request):
     return render(request, "app/niagara.html")
 
+def hotelconfirm(request, pkg_id):
+    request.session['pkgID'] = pkg_id
+    name = request.POST['name']
+    numberOfPerson = int(request.POST['people'])
+    email = request.POST['email']
+    cost = (numberOfPerson * Hotel.objects.get(uuid=pkg_id).hotel_price)
+    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
+              fail_silently=True)
+    return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
+
+
+def hotelbooking(request, pkg_id):
+    request.session['hotelID'] = pkg_id
+    pkg = Hotel.objects.get(uuid=pkg_id)
+
+    return render(request, "app/hotelbooking.html", {'hotel': pkg})
+
 def search_hotels(request):
     search = request.POST['search']
     amenities_objs = Amenities.objects.all()
@@ -163,14 +175,4 @@ def search_hotels(request):
     context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs}
     return render(request, "app/hotels.html", context)
 
-def hotelconfirm(request, pkg_id):
-    request.session['pkgID'] = pkg_id
-    name = request.POST['name']
-    numberOfPerson = int(request.POST['people'])
-    email = request.POST['email']
 
-    cost = (numberOfPerson * Hotel.objects.get(uuid=pkg_id).hotel_price)
-
-    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
-              fail_silently=True)
-    return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})

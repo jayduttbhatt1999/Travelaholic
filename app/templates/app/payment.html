@@ -54,6 +54,22 @@
      </script>
 </head>
 
+<style>
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+</style>
+
 <body>
 {% block start %}
   <section class="form-payment" style="margin-top:30px;padding:50px; line-height:30px;">
@@ -118,7 +134,10 @@
       </form>
 
 </div>
-	  	  <button onclick="myFunction()">BOOK NOW</button>
+          <div style="text-align:center">
+            <button onclick="myFunction()">BOOK NOW</button>
+          </div>
+{#	  	  <button onclick="myFunction()">BOOK NOW</button>#}
 
 <p id="demo"></p>
 
