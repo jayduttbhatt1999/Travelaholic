@@ -24,6 +24,7 @@ urlpatterns = [
     path(r'locationinfo2.html/', views.locationinfo2, name='locationinfo2'),
 
     path('messages/', views.message, name='messages'),
+
     path('contact/', views.contact, name='contact'),
     path('payment.html', views.payment, name='payment'),
 
