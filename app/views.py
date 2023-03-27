@@ -1,4 +1,3 @@
-from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -58,7 +57,6 @@ def login_page(request):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         login(request, user_obj)
-        # return redirect('app:index')
 
         return HttpResponseRedirect(reverse('app:index'))
     return render(request, 'app/login.html')
@@ -76,13 +74,12 @@ def register_page(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user_obj = User.objects.filter(username=username)
-
-        if user_obj.exists():
+        user = User.objects.filter(username=username)
+        if user.exists():
             messages.warning(request, 'Username already exists')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-        user = User.objects.create(username=username)
+        user = User.objects.create(username=username,email=email)
         user.set_password(password)
         user.save()
         return redirect('app:login')
@@ -132,6 +129,11 @@ def booking(request, pkg_id):
 
     return render(request, "app/booking.html", {'package': pkg})
 
+def hotelbooking(request, pkg_id):
+    request.session['hotelID'] = pkg_id
+    pkg = Hotel.objects.get(uuid=pkg_id)
+
+    return render(request, "app/hotelbooking.html", {'hotel': pkg})
 
 def confirm(request, pkg_id):
     request.session['pkgID'] = pkg_id
@@ -146,12 +148,13 @@ def confirm(request, pkg_id):
     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
 
 
-def locationinfo(request):
-    return render(request, "app/locationinfo.html")
+def quebec(request):
+    return render(request, "app/quebec.html")
 
-
-def locationinfo2(request):
-    return render(request, "app/locationinfo2.html")
+def banff(request):
+    return render(request, "app/banff.html")
+def niagara(request):
+    return render(request, "app/niagara.html")
 
 def search_hotels(request):
     search = request.POST['search']
@@ -159,3 +162,15 @@ def search_hotels(request):
     hotel_objs = Hotel.objects.filter(hotel_city=search)
     context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs}
     return render(request, "app/hotels.html", context)
+
+def hotelconfirm(request, pkg_id):
+    request.session['pkgID'] = pkg_id
+    name = request.POST['name']
+    numberOfPerson = int(request.POST['people'])
+    email = request.POST['email']
+
+    cost = (numberOfPerson * Hotel.objects.get(uuid=pkg_id).hotel_price)
+
+    send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
+              fail_silently=True)
+    return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})

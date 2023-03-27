@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from app.views import ResetPasswordView
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
@@ -22,18 +21,19 @@ urlpatterns = [
     path('index/package/', views.package, name='package'),
     path('hotelbooking/', views.hotelbooking, name='hotelbooking'),
 
-    path(r'locationinfo.html/', views.locationinfo, name='locationinfo'),
-    path(r'locationinfo2.html/', views.locationinfo2, name='locationinfo2'),
+    path('quebec/', views.quebec, name='quebec'),
+    path('niagara/', views.niagara, name='niagara'),
+    path('banff/', views.banff, name='banff'),
 
     path('messages/', views.message, name='messages'),
 
     path('contact/', views.contact, name='contact'),
-    path('payment.html', views.payment, name='payment'),
+    path('index/payment/', views.payment, name='payment'),
 
-    # path('booking/<pkg_id>', views.booking, name='booking'),
-    # path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),
-    # path("confirm/<pkg_id>", views.confirm, name='confirm'),
-    # path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
+    path('booking/<pkg_id>', views.booking, name='booking'),
+    path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),
+    path("confirm/<pkg_id>", views.confirm, name='confirm'),
+    path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
 
     path('profile/', views.profile, name='users-profile'),
 
