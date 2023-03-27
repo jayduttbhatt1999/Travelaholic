@@ -18,6 +18,7 @@ urlpatterns = [
     path('register/', views.register_page, name='register_page'),
 
     path('hotels/', views.hotels, name='hotels'),
+    path('hotels/search_hotels', views.search_hotels, name='hotel'),
     path('index/package/', views.package, name='package'),
 
     path(r'locationinfo.html/', views.locationinfo, name='locationinfo'),
@@ -28,10 +29,10 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('payment.html', views.payment, name='payment'),
 
-    path('booking/<pkg_id>', views.booking, name='booking'),
-    path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),
-    path("confirm/<pkg_id>", views.confirm, name='confirm'),
-    path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
+    # path('booking/<pkg_id>', views.booking, name='booking'),
+    # path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),
+    # path("confirm/<pkg_id>", views.confirm, name='confirm'),
+    # path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
 
     path('profile/', views.profile, name='users-profile'),
 

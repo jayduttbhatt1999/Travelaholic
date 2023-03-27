@@ -45,16 +45,14 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input type="text" name="username" required class="form-control" id="exampleInputEmail1"
-                       aria-describedby="emailHelp">
+                <input type="text" name="username" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
-{#            <p style="color: white;font-weight:600">Don't have an account ? Create one <a style="color: darkblue" href="{% url 'app:register_page' %}">here</a>#}
-{#            </p>#}
+            <p style="color: white;font-weight:600">Don't have an account ? Create one <a style="color: darkblue" href="{% url 'app:register_page' %}">here</a></p>
             <button type="submit" style="alignment-baseline: center" class="primary-btn text-uppercase">Login</button>
         </form>
         <p><a href="{% url 'app:password_reset' %}" style="color: white;font-weight: 500;">Forgot password?</a></p>

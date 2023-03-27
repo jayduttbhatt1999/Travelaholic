@@ -116,7 +116,7 @@
                                         <p class="price-btn">${{ package_obj.package_price }} </p>
                                     </li>
                                     <li class="d-flex justify-content-between align-center">
-                                    <a href="{% url 'app:booking' package_obj.uuid %}" class="Book Now-btn"  style="background: #808B96; margin-left: 126px;padding: 4px;color: white;">Book Now</a>
+                                  <button class="Book Now-btn"><a href="{% url 'app:booking' package_obj.uuid %}" style="color: white">Book Now</a></button>
                                     </li>
                                 </ul>
                             </div>

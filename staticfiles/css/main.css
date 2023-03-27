@@ -2379,6 +2379,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .primary-btn {
   background: #24248e;
+  margin: 10px;
   line-height: 36px;
   padding-left: 30px;
   padding-right: 30px;
@@ -2879,7 +2880,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .home-about-area .home-about-left .primary-btn {
   margin-top: 10px;
-  background: #222;
+  background: darkblue;
   font-size: 14px;
 }
 
@@ -3211,16 +3212,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .destinations-area .single-destinations .details .price-btn {
-  background: #f8b600;
-  color: #222;
+  background: darkblue;
+  color: white;
   font-weight: 600;
   padding: 5px 20px;
+  margin: auto;
 }
-
 .destinations-area .single-destinations:hover {
   box-shadow: 0px 10px 30px 0px rgba(60, 64, 143, 0.2);
 }
 
+.destinations-area .single-destinations .price-btn:hover{
+    background: #f8b600;
+  color: white;
+  font-weight: 600;
+  padding: 5px 20px;
+}
 .destinations-area .star .checked {
   color: orange;
 }
@@ -4533,4 +4540,23 @@ h1.mb-10 {
 }
 .form-payment h3{
   color: white;
+}
+button.Book.Now-btn {
+    color: white;
+    background: darkblue;
+    padding: 5px 15px;
+    /* text-align: -webkit-match-parent; */
+    margin: auto;
+}
+
+button.Book.Now-btn:hover {
+    color: black;
+    background: #f8b600;
+    padding: 5px 15px;
+    margin: auto;
+  border-color: #f8b600;
+}
+form.align-items-center {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
