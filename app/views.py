@@ -1,3 +1,4 @@
+import form as form
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -8,7 +9,7 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .forms import ContactUsForm
+from .forms import ContactUsForm, BookingForm, PackageForm
 from .models import Amenities, Hotel, Extras, Package, Contact
 from django import forms
 from django.core.mail import send_mail
@@ -32,6 +33,7 @@ def index(request):
 
 def hotelbooking(request):
     return render(request, "app/hotelbooking.html")
+
 
 @login_required
 def profile(request):
@@ -61,12 +63,15 @@ def login_page(request):
         return HttpResponseRedirect(reverse('app:index'))
     return render(request, 'app/login.html')
 
+
 def logout_page(request):
     logout(request)
     return render(request, 'app/index.html')
 
+
 def payment(request):
     return render(request, "app/payment.html")
+
 
 def register_page(request):
     if request.method == 'POST':
@@ -79,7 +84,7 @@ def register_page(request):
             messages.warning(request, 'Username already exists')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-        user = User.objects.create(username=username,email=email)
+        user = User.objects.create(username=username, email=email)
         user.set_password(password)
         user.save()
         return redirect('app:login')
@@ -93,8 +98,9 @@ def about(request):
 
 def hotels(request):
     amenities_objs = Amenities.objects.all()
+    package_objs = Package.objects.all()
     hotel_objs = Hotel.objects.all()
-    context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs}
+    context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs, 'package_objs': package_objs}
     return render(request, "app/hotels.html", context)
 
 
@@ -108,6 +114,42 @@ def package(request):
 def message(request):
     return render(request, "app/messages.html")
 
+
+def book(request):
+    # request.session['hotelID'] = pkg_id
+    # pkg = Hotel.objects.get(uuid=pkg_id)
+    if (request.method == 'POST'):
+
+        form3 = BookingForm(request.POST)
+        if form3.is_valid():
+            form3.save()
+            # form4 = BookingForm()
+            messages.success(request, "Booking Confirmed")
+            return HttpResponseRedirect(reverse('app:book'))
+    else:
+        form6 = BookingForm()
+        return render(request, 'app/book.html', {'form1': form6})
+    return render(request, 'app/book.html', {'form1': form3})
+    # return render(request, "app/book.html")
+
+
+def packbook(request):
+    # request.session['hotelID'] = pkg_id
+    # pkg = Hotel.objects.get(uuid=pkg_id)
+    if request.method == 'POST':
+        form3 = PackageForm(request.POST)
+        if form3.is_valid():
+            form3.save()
+            # form4 = BookingForm()
+            messages.success(request, "Package Booking Confirmed")
+            return HttpResponseRedirect(reverse('app:book'))
+    else:
+        form6 = PackageForm()
+        return render(request, 'app/bookpack.html', {'form2': form6})
+    return render(request, 'app/bookpack.html', {'form2': form3})
+    # return render(request, "app/book.html")
+
+
 def contact(request):
     if request.method == 'POST':
         # create an instance of our form, and fill it with the POST data
@@ -119,9 +161,10 @@ def contact(request):
             return render(request, 'app/contact.html', {'form': form2})
     else:
         # this must be a GET request, so create an empty form
-        form = ContactUsForm()
-        return render(request, 'app/contact.html', {'form': form})
+        form5 = ContactUsForm()
+        return render(request, 'app/contact.html', {'form': form5})
     # return render(request, "app/contact.html")
+
 
 def booking(request, pkg_id):
     request.session['pkgID'] = pkg_id
@@ -146,10 +189,14 @@ def confirm(request, pkg_id):
 def quebec(request):
     return render(request, "app/quebec.html")
 
+
 def banff(request):
     return render(request, "app/banff.html")
+
+
 def niagara(request):
     return render(request, "app/niagara.html")
+
 
 def hotelconfirm(request, pkg_id):
     request.session['pkgID'] = pkg_id
@@ -168,11 +215,10 @@ def hotelbooking(request, pkg_id):
 
     return render(request, "app/hotelbooking.html", {'hotel': pkg})
 
+
 def search_hotels(request):
     search = request.POST['search']
     amenities_objs = Amenities.objects.all()
     hotel_objs = Hotel.objects.filter(hotel_city=search)
     context = {'amenities_objs': amenities_objs, 'hotel_objs': hotel_objs}
     return render(request, "app/hotels.html", context)
-
-

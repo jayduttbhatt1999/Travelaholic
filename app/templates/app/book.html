@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% load static %}
+    <title>Travelaholic</title>
+</head>
+
+<body>
+{% block start %}
+    <section class="form-payment" style="margin-top:30px;padding:50px; line-height:30px;">
+
+        <div class="container">
+            <form id="bookingForm" action="{% url 'app:book' %}" style="margin-top: 30px"
+                  method="POST">
+                <h2 class="text-white">Book Your Hotel Here</h2>
+                {% csrf_token %}
+                {% include 'app/messages.html' %}
+                {{ form1.as_p }}
+                        <button name="btnS" class="genric-btn primary center"
+                                style="float: right;margin-top: 20px;margin-right: 550px;" type="submit">BOOK NOW
+                        </button>
+{#                    </div>#}
+{#                </div>#}
+            </form>
+
+        </div>
+
+{#        <p id="demo"></p>#}
+
+{#        <script>#}
+{#            function myFunction() {#}
+{##}
+{#                document.getElementById("demo").innerHTML = "PAYMENT IS DISABLED DUE TO SECURITY REASONS ";#}
+{#            }#}
+{#        </script>#}
+    </section>
+{% endblock %}
+</body>
+</html>

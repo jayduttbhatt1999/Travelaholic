@@ -41,7 +41,7 @@
                         </div>
                         <div class="price-detials">
                             <a
-                                    href="{% url 'app:quebec' %}" class="price-btn">Click here to get more info!
+                                    href="{% url 'app:quebec' %}" class="price-btn">Explore
                             </a>
                         </div>
                         <div class="details">
@@ -57,7 +57,7 @@
                             <img class="img-fluid" src="/staticfiles/img/packages/hot-deal3.jpg"alt="">
                         </div>
                         <div class="price-detials">
-                            <a href="{% url 'app:niagara' %}" class="price-btn">Starting From <span>$150</span></a>
+                            <a href="{% url 'app:niagara' %}" class="price-btn">Explore</a>
                         </div>
                         <div class="details">
                             <h4 class="text-white">Wonder's of Niagara</h4>
@@ -77,7 +77,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-40 col-lg-8">
                     <div class="title text-center">
-                        <h1 class="mb-10">Popular Packages</h1>
+                        <h1 class="mb-10">All Packages</h1>
                         <p>Make memories that will last a lifetime.</p>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                                         <p class="price-btn1">${{ package_obj.package_price }} </p>
                                     </li>
                                     <li class="d-flex justify-content-between align-center">
-                                  <button class="Book Now-btn" style="margin-left: 35%"><a href="{% url 'app:booking' package_obj.uuid %}" style="color: white">Book Now</a></button>
+                                  <button class="Book Now-btn" style="margin-left: 35%"><a href="{% url 'app:packbook' %}" style="color: white">Book Now</a></button>
                                     </li>
                                 </ul>
                             </div>

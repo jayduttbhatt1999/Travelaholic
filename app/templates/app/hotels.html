@@ -26,7 +26,8 @@
 
                 <div class="col-md-2 justify-content-center">
                     <div class="form-inline" style="flex-wrap:nowrap">
-                        <label style="margin:10px;font-weight: 600;font-size: 20px;color: black" for="exampleFormControlSelect1">Search</label>
+                        <label style="margin:10px;font-weight: 600;font-size: 20px;color: black"
+                               for="exampleFormControlSelect1">Search</label>
                         <input name="search" class="form-control" value="{{ search }}" placeholder="Search City">
                         <button type="submit" class="primary-btn text-uppercase">Find</button>
                     </div>
@@ -54,13 +55,14 @@
             <div class="row">
                 {% for hotel_obj in hotel_objs %}
                     <div class="col-lg-4">
-                        <div class="single-destinations">
+                        <div class="single-destinations" id="form">
                             <div class="thumb">
-                                <img style="object-fit: cover" height="150" width="349"  src="{{ hotel_obj.url }}" alt=""/>
+                                <img style="object-fit: cover" height="150" width="349" src="{{ hotel_obj.url }}"
+                                     alt=""/>
                             </div>
                             <div class="details">
                                 <h4 class="d-flex justify-content-between">
-                                        <span>
+                                        <span id="hotel_name">
                                         {{ hotel_obj.hotel_name }}
                                     </span>
                                 </h4>
@@ -83,7 +85,14 @@
                                         </span>
                                     </li>
                                     <li class="d-flex justify-content-between align-items-center">
-                                        <a href="{% url 'app:hotelbooking' hotel_obj.uuid %}" class="price-btn align-content-md-center" style="margin-left: 35%">Book now</a>
+                                        <span>Rooms left</span>
+                                        <span>
+                                            {{ hotel_obj.room_count }}
+                                        </span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center">
+                                        <a href="{% url 'app:book' %}" class="price-btn align-content-md-center"
+                                           style="margin-left: 35%">Book now</a>
                                     </li>
                                 </ul>
                             </div>
@@ -111,7 +120,7 @@
                         standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on
                         the job is beyond reproach. inappropriate behavior is often laughed.
                     </p>
-                    <a href="{%  url 'app:contact' %}" class="primary-btn text-uppercase">request custom price</a>
+                    <a href="{% url 'app:contact' %}" class="primary-btn text-uppercase">request custom price</a>
                 </div>
                 <div class="col-lg-6 col-md-12 home-about-right no-padding">
                     <img class="img-fluid" src="/staticfiles/img/hotels/about-img.jpg" alt="">
