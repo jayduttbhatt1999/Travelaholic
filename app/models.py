@@ -98,7 +98,7 @@ class Booking(BaseModel):
     telephone = models.CharField(max_length=10,blank=True)
     email = models.CharField(max_length=100, blank=True)
     people = models.CharField(max_length=100, blank=True)
-    # ishotel_name = models.ForeignKey(Hotel, related_name="ishotel_name", on_delete=models.CASCADE, null=True)
+    ishotel_name = models.ForeignKey(Hotel, related_name="ishotel_name", on_delete=models.CASCADE, null=True)
 
     # startdate = models.CharField(max_length=10, default=None)
     # enddate = models.CharField(max_length=10, default=None)

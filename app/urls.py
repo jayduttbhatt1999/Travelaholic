@@ -33,10 +33,10 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('payment/', views.payment, name='payment'),
 
-    path('booking/<pkg_id>', views.booking, name='booking'),
-    path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),
-    path("confirm/<pkg_id>", views.confirm, name='confirm'),
-    path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
+    # path('booking/<pkg_id>', views.booking, name='booking'),
+    # path('hotelbooking/<pkg_id>', views.hotelbooking, name='hotelbooking'),
+    # path("confirm/<pkg_id>", views.confirm, name='confirm'),
+    # path("hotelconfirm/<pkg_id>", views.hotelconfirm, name='hotelconfirm'),
 
     path('profile/', views.profile, name='users-profile'),
 
