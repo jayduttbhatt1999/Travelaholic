@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+<!DOCTYPE HTML>
+
+<head>
+    {% load static %}
+    <title>Travelaholic</title>
+</head>
+
+{% block start %}
+    <section class="relative about-banner">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Book your Package
+                    </h1>
+                    {#                    <p class="text-white link-nav"><a href="{% url 'app:index' %}">Home </a> <span#}
+                    {#                            class="lnr lnr-arrow-right"></span> <a href={% url 'app:contact' %}> Contact Us</a></p>#}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container" style="padding-right: 200px; padding-left: 200px">
+        <form id="bookingForm" action="{% url 'app:packbook' %}" style="margin-top: 30px"
+              method="POST">
+            <h2 class="text-white">Book Your Package Here</h2>
+            {% csrf_token %}
+            {% include 'app/messages.html' %}
+            {{ form2.as_p }}
+            <input name="btnS" class="center genric-btn primary " type="submit" value="Book Now">
+        </form>
+    </div>
+{% endblock %}
+
