@@ -142,7 +142,7 @@ def packbook(request):
             form3.save()
             # form4 = BookingForm()
             messages.success(request, "Package Booking Confirmed")
-            return HttpResponseRedirect(reverse('app:book'))
+            return HttpResponseRedirect(reverse('app:packbook'))
     else:
         form6 = PackageForm()
         return render(request, 'app/bookpack.html', {'form2': form6})
@@ -166,26 +166,6 @@ def contact(request):
     # return render(request, "app/contact.html")
 
 
-# def booking(request, pkg_id):
-#     request.session['pkgID'] = pkg_id
-#     pkg = Package.objects.get(uuid=pkg_id)
-#
-#     return render(request, "app/booking.html", {'package': pkg})
-
-
-# def confirm(request, pkg_id):
-#     request.session['pkgID'] = pkg_id
-#     name = request.POST['name']
-#     persons = int(request.POST['people'])
-#     email = request.POST['email']
-#
-#     cost = (persons * Package.objects.get(uuid=pkg_id).package_price)
-#
-#     send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
-#               fail_silently=True)
-#     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': persons, 'email': email})
-
-
 def quebec(request):
     return render(request, "app/quebec.html")
 
@@ -196,24 +176,6 @@ def banff(request):
 
 def niagara(request):
     return render(request, "app/niagara.html")
-
-
-# def hotelconfirm(request, pkg_id):
-#     request.session['pkgID'] = pkg_id
-#     name = request.POST['name']
-#     numberOfPerson = int(request.POST['people'])
-#     email = request.POST['email']
-#     cost = (numberOfPerson * Hotel.objects.get(uuid=pkg_id).hotel_price)
-#     send_mail('Confirm your booking', 'Make payment', 'hanikumari9831@gmail.com', [email.format(cost)],
-#               fail_silently=True)
-#     return render(request, "app/confirm.html", {'cost': cost, 'name': name, 'persons': numberOfPerson, 'email': email})
-
-
-# def hotelbooking(request, pkg_id):
-#     request.session['hotelID'] = pkg_id
-#     pkg = Hotel.objects.get(uuid=pkg_id)
-#
-#     return render(request, "app/hotelbooking.html", {'hotel': pkg})
 
 
 def search_hotels(request):

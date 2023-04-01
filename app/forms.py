@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 
-from .models import Contact, Booking, Packbook
+from .models import Contact, Booking, Packbook, Hotel
 
 
 # class Usermessage(ModelForm):
@@ -14,7 +14,10 @@ from .models import Contact, Booking, Packbook
 #     model = Contact
 #     fields = ['name', 'email_id', 'subject', 'subject']
 class BookingForm(forms.ModelForm):
-    gender = forms.ChoiceField(label="Gender",choices=[('male','Male'),('female','Female'),('other','Other')], widget=forms.RadioSelect)
+    gender = forms.ChoiceField(label="Gender", choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
+                               widget=forms.RadioSelect)
+    # hotel_name = forms.ModelChoiceField(queryset=Hotel.objects, empty_label=None,widget=forms.ChoiceField)
+
     class Meta:
         model = Booking
         fields = '__all__'
@@ -24,7 +27,7 @@ class BookingForm(forms.ModelForm):
             'email': '',
             'telephone': '',
             'people': '',
-            'hotel_name': ''
+            'hotel_name': 'Hotel name'
         }
         abstract = True
         widgets = {
@@ -49,6 +52,7 @@ class BookingForm(forms.ModelForm):
 class PackageForm(forms.ModelForm):
     gender = forms.ChoiceField(label="Gender", choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
                                widget=forms.RadioSelect)
+
     class Meta:
         model = Packbook
         fields = '__all__'
