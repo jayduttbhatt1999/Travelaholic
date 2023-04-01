@@ -1,10 +1,6 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import User
-from form import form
-
-
-# Create your models here.
 
 
 class BaseModel(models.Model):
@@ -74,12 +70,6 @@ class Package(BaseModel):
         return self.package_name
 
 
-# class HotelBooking(BaseModel):
-#     hotel = models.ForeignKey(Hotel, related_name="hotel_booking", on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, related_name="user_booking", on_delete=models.CASCADE)
-#     booking_type = models.CharField(choices=(('pre paid', 'pre paid'), ('post paid', 'post paid')), max_length=100)
-
-
 class Contact(BaseModel):
     name = models.CharField(max_length=100, blank=True)
     email_id = models.CharField(max_length=100, blank=True)
@@ -103,9 +93,6 @@ class Booking(BaseModel):
     def __str__(self):
         return self.name
 
-    # startdate = models.CharField(max_length=10, default=None)
-    # enddate = models.CharField(max_length=10, default=None)
-
 
 class Packbook(BaseModel):
     name = models.CharField(max_length=100, blank=True)
@@ -117,15 +104,3 @@ class Packbook(BaseModel):
 
     def __str__(self):
         return self.name
-
-# class Detailed_description(BaseModel):
-#     dest_id = models.AutoField(primary_key=True)
-#     city = models.CharField(max_length=20)
-#     province = models.CharField(max_length=30)
-#     days = models.IntegerField(default=5)
-#     price = models.IntegerField(default=500)
-#     rating = models.IntegerField(default=5)
-#     dest_name = models.CharField(max_length=35)
-#     img1 = models.ImageField(upload_to='gallery')
-#     img2 = models.ImageField(upload_to='gallery')
-#     description = models.TextField(max_length=500)

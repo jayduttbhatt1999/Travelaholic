@@ -123,12 +123,12 @@ def book(request):
         form3 = BookingForm(request.POST)
         if form3.is_valid():
             form3.save()
-            msg1 = "Thank you for booking with us, %s"% (form3.cleaned_data['name'])
+            msg1 = "Thank you for booking with us, %s" % (form3.cleaned_data['name'])
             msg2 = "We are looking forward te meet you at %s" % (form3.cleaned_data['ishotel_name'])
-            msg3 = "Thank you for booking with us, %s" % (form3.cleaned_data['email'])
+            msg3 = "Your Confirmation and payment link will be sent to, %s" % (form3.cleaned_data['email'])
             # form4 = BookingForm()
             # messages.success(request, "Booking Confirmed")
-            return render(request, 'app/book.html', {'form3': form3, 'msg1': msg1,'msg2': msg2, 'msg3': msg3})
+            return render(request, 'app/confirm.html', {'form3': form3, 'msg1': msg1, 'msg2': msg2, 'msg3': msg3})
     else:
         form6 = BookingForm()
         return render(request, 'app/book.html', {'form1': form6})
@@ -143,9 +143,12 @@ def packbook(request):
         form3 = PackageForm(request.POST)
         if form3.is_valid():
             form3.save()
+            msg1 = "Thank you for booking with us, %s" % (form3.cleaned_data['name'])
+            msg2 = "Your package is  %s" % (form3.cleaned_data['ispackage_name'])
+            msg3 = "Your Confirmation and payment link will be sent to, %s" % (form3.cleaned_data['email'])
+            # msg4 = "Your total amount is %s " % (form3.cleaned_data['ispackage_name'])
             # form4 = BookingForm()
-            messages.success(request, "Package Booking Confirmed")
-            return HttpResponseRedirect(reverse('app:packbook'))
+            return render(request, 'app/confirm1.html', {'form3': form3, 'msg1': msg1, 'msg2': msg2, 'msg3': msg3})
     else:
         form6 = PackageForm()
         return render(request, 'app/bookpack.html', {'form2': form6})
