@@ -29,16 +29,14 @@
             <h2 class="text-white">Book Your Hotel Here</h2>
             {% csrf_token %}
             {% include 'app/messages.html' %}
+            <h2> {{ msg1 }}</h2>
+            <h2> {{ msg2 }}</h2>
+            <h2> {{ msg3 }}</h2>
             {{ form1.as_p }}
             <div class="center">
                 <input name="btnS" class="center genric-btn primary " type="submit" value="Book Now">
             </div>
-            {#            <button #}
-            {#                    #}
-            {#            </button>#}
             <br><br><br><br>
-            {#                    </div>#}
-            {#                </div>#}
         </form>
 
     </div>

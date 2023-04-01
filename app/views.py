@@ -123,9 +123,12 @@ def book(request):
         form3 = BookingForm(request.POST)
         if form3.is_valid():
             form3.save()
+            msg1 = "Thank you for booking with us, %s"% (form3.cleaned_data['name'])
+            msg2 = "We are looking forward te meet you at %s" % (form3.cleaned_data['ishotel_name'])
+            msg3 = "Thank you for booking with us, %s" % (form3.cleaned_data['email'])
             # form4 = BookingForm()
-            messages.success(request, "Booking Confirmed")
-            return HttpResponseRedirect(reverse('app:book'))
+            # messages.success(request, "Booking Confirmed")
+            return render(request, 'app/book.html', {'form3': form3, 'msg1': msg1,'msg2': msg2, 'msg3': msg3})
     else:
         form6 = BookingForm()
         return render(request, 'app/book.html', {'form1': form6})
