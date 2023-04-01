@@ -63,6 +63,7 @@ class PackageForm(forms.ModelForm):
             'telephone': '',
             'package_name': '',
             'people': '',
+            'pack_price':''
 
         }
 
@@ -78,6 +79,7 @@ class PackageForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'placeholder': 'Enter your phone number', 'required': True}),
             'package_name': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'Enter package name', 'required': True}),
+            # 'pack_price':
             'people': forms.TextInput(
                 attrs={'class': 'form-control', 'placeholder': 'For how many people', 'required': True}),
             # 'startdate': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Starting date'}),

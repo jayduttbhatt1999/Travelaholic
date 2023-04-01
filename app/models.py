@@ -60,14 +60,14 @@ class Package(BaseModel):
     package_province = models.CharField(max_length=100, blank=True)
     package_duration = models.CharField(max_length=200, blank=True)
     package_airport = models.CharField(max_length=100, blank=True)
-    package_price = models.IntegerField()
-    description = models.TextField()
+    package_price = models.IntegerField(blank=True)
+    description = models.TextField(blank=True)
     extras = models.ManyToManyField(Extras)
     date = models.DateField(null=False)
     url = models.URLField(blank=True, null=True)
 
     def __str__(self) -> str:
-        return self.package_name
+        return "%s %s" % (self.package_name, self.package_price)
 
 
 class Contact(BaseModel):
@@ -85,7 +85,7 @@ class Booking(BaseModel):
     ]
     name = models.CharField(max_length=100, blank=True)
     gender = models.CharField(max_length=100, blank=True)
-    telephone = models.CharField(max_length=10,blank=True)
+    telephone = models.CharField(max_length=10, blank=True)
     email = models.CharField(max_length=100, blank=True)
     people = models.CharField(max_length=100, blank=True)
     ishotel_name = models.ForeignKey(Hotel, on_delete=models.CASCADE)
@@ -97,10 +97,12 @@ class Booking(BaseModel):
 class Packbook(BaseModel):
     name = models.CharField(max_length=100, blank=True)
     gender = models.CharField(max_length=10, blank=True)
-    telephone = models.CharField(max_length=10,blank=True)
+    telephone = models.CharField(max_length=10, blank=True)
     email = models.CharField(max_length=100, blank=True)
     people = models.CharField(max_length=100, blank=True)
-    ispackage_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE, null=True)
+    ispackage_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE)
+
+    # package_price = models.OneToOneField(Package, on_delete=models.CASCADE, default=True)
 
     def __str__(self):
-        return self.name
+        return "Package for %s " % self.name

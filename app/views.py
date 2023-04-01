@@ -137,6 +137,8 @@ def book(request):
 
 
 def packbook(request):
+    # extras = Extras.objects.all()
+    package_objs = Package.objects.all()
     # request.session['hotelID'] = pkg_id
     # pkg = Hotel.objects.get(uuid=pkg_id)
     if request.method == 'POST':
@@ -146,9 +148,10 @@ def packbook(request):
             msg1 = "Thank you for booking with us, %s" % (form3.cleaned_data['name'])
             msg2 = "Your package is  %s" % (form3.cleaned_data['ispackage_name'])
             msg3 = "Your Confirmation and payment link will be sent to, %s" % (form3.cleaned_data['email'])
-            # msg4 = "Your total amount is %s " % (form3.cleaned_data['ispackage_name'])
+            # msg4 = "Your total amount is %s " % (form3.cleaned_data['package_objs.package_price'])
             # form4 = BookingForm()
-            return render(request, 'app/confirm1.html', {'form3': form3, 'msg1': msg1, 'msg2': msg2, 'msg3': msg3})
+            context = {'form3': form3, 'msg1': msg1, 'msg2': msg2, 'msg3': msg3,'package_objs': package_objs}
+            return render(request, 'app/confirm1.html', context)
     else:
         form6 = PackageForm()
         return render(request, 'app/bookpack.html', {'form2': form6})
