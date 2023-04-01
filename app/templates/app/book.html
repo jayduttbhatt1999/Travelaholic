@@ -11,12 +11,13 @@
     <section class="form-payment" style="margin-top:30px;padding:50px; line-height:30px;">
 
         <div class="container">
-            <form id="bookingForm" action="{% url 'app:book' %}" style="margin-top: 30px"
+            <form id="bookingForm"  style="margin-top: 30px"
                   method="POST">
                 <h2 class="text-white">Book Your Hotel Here</h2>
                 {% csrf_token %}
                 {% include 'app/messages.html' %}
                 {{ form1.as_p }}
+
                         <button name="btnS" class="genric-btn primary center"
                                 style="float: right;margin-top: 20px;margin-right: 550px;" type="submit">BOOK NOW
                         </button>

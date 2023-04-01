@@ -23,8 +23,8 @@ urlpatterns = [
     path('packages/', views.package, name='packages'),
     path('quebec/', views.quebec, name='quebec'),
     path('packbook/', views.packbook, name='packbook'),
-
     path('book/', views.book, name='book'),
+    path('book/<int:pkg_id>', views.book, name='book'),
     path('niagara/', views.niagara, name='niagara'),
     path('banff/', views.banff, name='banff'),
 

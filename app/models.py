@@ -94,11 +94,14 @@ class Booking(BaseModel):
         (3, 'other'),
     ]
     name = models.CharField(max_length=100, blank=True)
-    gender = models.CharField(max_length=10, blank=True)
+    gender = models.CharField(max_length=100, blank=True)
     telephone = models.CharField(max_length=10,blank=True)
     email = models.CharField(max_length=100, blank=True)
     people = models.CharField(max_length=100, blank=True)
     ishotel_name = models.ForeignKey(Hotel, related_name="ishotel_name", on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
 
     # startdate = models.CharField(max_length=10, default=None)
     # enddate = models.CharField(max_length=10, default=None)
@@ -112,6 +115,8 @@ class Packbook(BaseModel):
     people = models.CharField(max_length=100, blank=True)
     ispackage_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE, null=True)
 
+    def __str__(self):
+        return self.name
 
 # class Detailed_description(BaseModel):
 #     dest_id = models.AutoField(primary_key=True)

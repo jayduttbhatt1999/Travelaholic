@@ -14,6 +14,7 @@ from .models import Contact, Booking, Packbook
 #     model = Contact
 #     fields = ['name', 'email_id', 'subject', 'subject']
 class BookingForm(forms.ModelForm):
+    gender = forms.ChoiceField(label="Gender",choices=[('male','Male'),('female','Female'),('other','Other')], widget=forms.RadioSelect)
     class Meta:
         model = Booking
         fields = '__all__'
@@ -29,9 +30,9 @@ class BookingForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Enter Your name', 'required': True}),
-            'gender': forms.TextInput(
-                attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Select Your gender',
-                       'required': True}),
+            # 'gender': forms.TextInput(
+            #     attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Select Your gender',
+            #            'required': True}),
             'email': forms.EmailInput(
                 attrs={'class': 'form-control', 'placeholder': 'Enter your email', 'required': True}),
             'telephone': forms.NumberInput(
@@ -46,6 +47,8 @@ class BookingForm(forms.ModelForm):
 
 
 class PackageForm(forms.ModelForm):
+    gender = forms.ChoiceField(label="Gender", choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
+                               widget=forms.RadioSelect)
     class Meta:
         model = Packbook
         fields = '__all__'
@@ -62,9 +65,9 @@ class PackageForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Enter Your name', 'required': True}),
-            'gender': forms.TextInput(
-                attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Select Your gender',
-                       'required': True}),
+            # 'gender': forms.TextInput(
+            #     attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Select Your gender',
+            #            'required': True}),
             'email': forms.EmailInput(
                 attrs={'class': 'form-control', 'placeholder': 'Enter your email', 'required': True}),
             'telephone': forms.NumberInput(
