@@ -31,8 +31,8 @@ def index(request):
     return render(request, 'app/index.html')
 
 
-def hotelbooking(request):
-    return render(request, "app/hotelbooking.html")
+# def hotelbooking(request):
+#     return render(request, "app/hotelbooking.html")
 
 
 @login_required
@@ -150,7 +150,7 @@ def packbook(request):
             msg3 = "Your Confirmation and payment link will be sent to, %s" % (form3.cleaned_data['email'])
             # msg4 = "Your total amount is %s " % (form3.cleaned_data['package_objs.package_price'])
             # form4 = BookingForm()
-            context = {'form3': form3, 'msg1': msg1, 'msg2': msg2, 'msg3': msg3,'package_objs': package_objs}
+            context = {'form3': form3, 'msg1': msg1, 'msg2': msg2, 'msg3': msg3, 'package_objs': package_objs}
             return render(request, 'app/confirm1.html', context)
     else:
         form6 = PackageForm()
