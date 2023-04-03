@@ -80,32 +80,32 @@ class Contact(BaseModel):
         return "Complaint from %s " % self.name
 
 
+
 class Booking(BaseModel):
     STATUS = [
         (1, 'male'),
         (2, 'female'),
         (3, 'other'),
     ]
-    name = models.CharField(max_length=100, blank=True)
-    gender = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=50, blank=True)
+    gender = models.CharField(max_length=10, blank=True)
+    email = models.CharField(max_length=75, blank=True)
+    people = models.CharField(max_length=80, blank=True)
     telephone = models.CharField(max_length=10, blank=True)
-    email = models.CharField(max_length=100, blank=True)
-    people = models.CharField(max_length=100, blank=True)
     ishotel_name = models.ForeignKey(Hotel, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 
-class Packbook(BaseModel):
-    name = models.CharField(max_length=100, blank=True)
-    gender = models.CharField(max_length=10, blank=True)
-    telephone = models.CharField(max_length=10, blank=True)
-    email = models.CharField(max_length=100, blank=True)
-    people = models.CharField(max_length=100, blank=True)
-    ispackage_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE)
 
-    # package_price = models.OneToOneField(Package, on_delete=models.CASCADE, default=True)
+class Packbook(BaseModel):
+    name = models.CharField(max_length=50, blank=True)
+    gender = models.CharField(max_length=8, blank=True)
+    email = models.CharField(max_length=50, blank=True)
+    people = models.CharField(max_length=50, blank=True)
+    telephone = models.CharField(max_length=10, blank=True)
+    ispackage_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE)
 
     def __str__(self):
         return "Package for %s " % self.name

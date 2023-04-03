@@ -1,4 +1,4 @@
-import form as form
+#import form as form
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -11,8 +11,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 from .forms import ContactUsForm, BookingForm, PackageForm
 from .models import Amenities, Hotel, Extras, Package, Contact
-from django import forms
-from django.core.mail import send_mail
+#from django import forms
+#from django.core.mail import send_mail
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
