@@ -92,7 +92,7 @@ class Booking(BaseModel):
     email = models.CharField(max_length=75, blank=True)
     people = models.CharField(max_length=80, blank=True)
     telephone = models.CharField(max_length=10, blank=True)
-    ishotel_name = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    hotel_name = models.ForeignKey(Hotel, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -105,7 +105,7 @@ class Packbook(BaseModel):
     email = models.CharField(max_length=50, blank=True)
     people = models.CharField(max_length=50, blank=True)
     telephone = models.CharField(max_length=10, blank=True)
-    ispackage_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE)
+    select_package_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE)
 
     def __str__(self):
         return "Package for %s " % self.name

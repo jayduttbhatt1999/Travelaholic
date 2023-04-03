@@ -24,8 +24,6 @@
     <div class="container" style="padding-right: 200px; padding-left: 200px">
         <form id="bookingForm" action="{% url 'app:packbook' %}" style="margin-top: 30px"
               method="POST">
-
-            <h2 class="text-white">Book Your Package Here</h2>
             {% csrf_token %}
             {% include 'app/messages.html' %}
             {{ form2.as_p }}

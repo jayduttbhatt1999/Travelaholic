@@ -23,7 +23,6 @@
     <div class="container" style="padding-right: 200px; padding-left: 200px">
         <form id="bookingForm" style="margin-top: 30px" action=""
               method="POST">
-            <h2 class="text-white">Book Your Hotel Here</h2>
             {% csrf_token %}
             {% include 'app/messages.html' %}
             {{ form1.as_p }}
@@ -32,10 +31,7 @@
             </div>
             <br><br><br><br>
         </form>
-
-
     </div>
-
 {% endblock %}
 </body>
 </html>
