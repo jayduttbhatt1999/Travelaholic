@@ -76,7 +76,7 @@ class ContactUsForm(forms.ModelForm):
             'message': '',
         },
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your name'}),
-            'email_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your Email'}),
-            'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter the Subject'}),
-            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Please enter your message'}), }
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your name', 'required': True}),
+            'email_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your Email', 'required': True}),
+            'subject': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter the Subject', 'required': True}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Please enter your message', 'required': True}), }
