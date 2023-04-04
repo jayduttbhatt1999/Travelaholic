@@ -124,7 +124,7 @@ def book(request):
         if form3.is_valid():
             form3.save()
             msg1 = "Thank you for booking with us, %s" % (form3.cleaned_data['name'])
-            msg2 = "We are looking forward te meet you at %s" % (form3.cleaned_data['ishotel_name'])
+            msg2 = "We are looking forward te meet you at %s" % (form3.cleaned_data['select_hotel_name'])
             msg3 = "Your Confirmation and payment link will be sent to, %s" % (form3.cleaned_data['email'])
             # form4 = BookingForm()
             # messages.success(request, "Booking Confirmed")
@@ -146,7 +146,7 @@ def packbook(request):
         if form3.is_valid():
             form3.save()
             msg1 = "Thank you for booking with us, %s" % (form3.cleaned_data['name'])
-            msg2 = "Your package is  %s" % (form3.cleaned_data['ispackage_name'])
+            msg2 = "Your package is  %s" % (form3.cleaned_data['select_package_name'])
             msg3 = "Your Confirmation and payment link will be sent to, %s" % (form3.cleaned_data['email'])
             # msg4 = "Your total amount is %s " % (form3.cleaned_data['package_objs.package_price'])
             # form4 = BookingForm()

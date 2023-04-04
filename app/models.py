@@ -92,7 +92,7 @@ class Booking(BaseModel):
     email = models.CharField(max_length=75, blank=True)
     people = models.CharField(max_length=80, blank=True)
     telephone = models.CharField(max_length=10, blank=True)
-    hotel_name = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    select_hotel_name = models.ForeignKey(Hotel, related_name='ishotel_name', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
