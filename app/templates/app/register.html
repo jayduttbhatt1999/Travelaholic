@@ -55,7 +55,8 @@
                     </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1"  class="form-label">Password</label>
-                <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" required class="form-control" id="exampleInputPassword1">
+                <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" oninvalid="this.setCustomValidity('Your password must contain atleast 8 characters and atleast 1 special character')" name="password" required class="form-control" id="exampleInputPassword1">
+
             </div>
             <button type="submit" style="alignment-baseline: center" class="primary-btn text-uppercase">Register
             </button>

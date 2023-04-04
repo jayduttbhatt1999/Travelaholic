@@ -21,6 +21,7 @@ urlpatterns = [
     path('index/package/', views.package, name='package'),
     # path('hotelbooking/', views.hotelbooking, name='hotelbooking'),
     path('packages/', views.package, name='packages'),
+    path('index/package/search_packages',views.search_packages, name='packages'),
     path('quebec/', views.quebec, name='quebec'),
     path('packbook/', views.packbook, name='packbook'),
     path('book/', views.book, name='book'),
