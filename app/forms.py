@@ -20,16 +20,11 @@ class BookingForm(forms.ModelForm):
         }
         abstract = True
         widgets = {
-            'name': forms.TextInput(
-                attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Please enter Your name', 'required': True}),
-            'email': forms.EmailInput(
-                attrs={'class': 'form-control', 'placeholder': 'Please enter your email', 'required': True}),
-            'telephone': forms.NumberInput(
-                attrs={'class': 'form-control', 'placeholder': 'Please enter your phone number', 'required': True}),
-            'people': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'For how many people?', 'required': True}),
-            'hotel_name': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Please enter hotel name?', 'required': True}),
+            'name': forms.TextInput(attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Please enter Your name', 'required': True}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your email', 'required': True}),
+            'telephone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your phone number', 'required': True}),
+            'people': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'For how many people?', 'required': True}),
+            'hotel_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter hotel name?', 'required': True}),
         }
 
 
@@ -52,16 +47,11 @@ class PackageForm(forms.ModelForm):
         }
 
         widgets = {
-            'name': forms.TextInput(
-                attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Please enter Your name', 'required': True}),
-            'email': forms.EmailInput(
-                attrs={'class': 'form-control', 'placeholder': 'Please enter your email', 'required': True}),
-            'telephone': forms.NumberInput(
-                attrs={'class': 'form-control', 'placeholder': 'Please enter your phone number', 'required': True}),
-            'package_name': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Please enter package name', 'required': True}),
-            'people': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'For how many people?', 'required': True}),
+            'name': forms.TextInput(attrs={'class': 'common-input mb-20 form-control', 'placeholder': 'Please enter Your name', 'required': True}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your email', 'required': True}),
+            'telephone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Please enter your phone number', 'required': True}),
+            'package_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Please enter package name', 'required': True}),
+            'people': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'For how many people?', 'required': True}),
         }
 
 
