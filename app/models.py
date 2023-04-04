@@ -90,7 +90,7 @@ class Booking(BaseModel):
     name = models.CharField(max_length=50, blank=True)
     gender = models.CharField(max_length=10, blank=True)
     email = models.CharField(max_length=75, blank=True)
-    people = models.CharField(max_length=80, blank=True)
+    people = models.IntegerField(blank=True)
     telephone = models.CharField(max_length=10, blank=True)
     select_hotel_name = models.ForeignKey(Hotel, related_name='ishotel_name', on_delete=models.CASCADE)
 
@@ -103,7 +103,7 @@ class Packbook(BaseModel):
     name = models.CharField(max_length=50, blank=True)
     gender = models.CharField(max_length=8, blank=True)
     email = models.CharField(max_length=50, blank=True)
-    people = models.CharField(max_length=50, blank=True)
+    people = models.IntegerField(blank=True)
     telephone = models.CharField(max_length=10, blank=True)
     select_package_name = models.ForeignKey(Package, related_name='ispackage_name', on_delete=models.CASCADE)
 
