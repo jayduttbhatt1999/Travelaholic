@@ -82,11 +82,7 @@ class Contact(BaseModel):
 
 
 class Booking(BaseModel):
-    STATUS = [
-        (1, 'male'),
-        (2, 'female'),
-        (3, 'other'),
-    ]
+
     name = models.CharField(max_length=50, blank=True)
     gender = models.CharField(max_length=10, blank=True)
     email = models.CharField(max_length=75, blank=True)
@@ -96,7 +92,6 @@ class Booking(BaseModel):
 
     def __str__(self):
         return self.name
-
 
 
 class Packbook(BaseModel):
